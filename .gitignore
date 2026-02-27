@@ -1,6 +1,9 @@
 # Build output
 **/bin/
 **/obj/
+**/publish/
+*.zip
+*.bacpac
 
 # User-specific files
 *.user

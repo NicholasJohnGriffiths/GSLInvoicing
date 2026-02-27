@@ -1,0 +1,22 @@
+@model GSLInvoicing.Web.Models.Config
+
+@{
+    ViewData["Title"] = "Delete Config";
+}
+
+<h1 class="h3 text-danger">Delete Config Row</h1>
+<p>Are you sure you want to delete this row?</p>
+
+<dl class="row mt-3">
+    <dt class="col-sm-3">ID</dt>
+    <dd class="col-sm-9">@Model.Id</dd>
+
+    <dt class="col-sm-3">Last Invoice Number</dt>
+    <dd class="col-sm-9">@Model.LastInvoiceNumber</dd>
+</dl>
+
+<form asp-action="Delete" method="post">
+    <input asp-for="Id" type="hidden" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-link">Back</a>
+</form>

@@ -1,0 +1,33 @@
+@model IEnumerable<GSLInvoicing.Web.Models.Config>
+
+@{
+    ViewData["Title"] = "Config";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Config</h1>
+    <a asp-action="Create" class="btn btn-primary">New Config Row</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Last Invoice Number</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var row in Model)
+    {
+        <tr>
+            <td>@row.Id</td>
+            <td>@row.LastInvoiceNumber</td>
+            <td class="text-end">
+                <a asp-action="Edit" asp-route-id="@row.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+                <a asp-action="Delete" asp-route-id="@row.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

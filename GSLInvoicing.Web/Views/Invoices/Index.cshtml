@@ -73,7 +73,7 @@
             <td>@invoice.InvoiceDate</td>
             <td>@invoice.Client.Name</td>
             <td>@invoice.PONumber</td>
-            <td>@invoice.InvoiceItems.Sum(ii => ii.Total).ToString("0.00")</td>
+            <td>@invoice.InvoiceItems.Sum(ii => ii.Total).ToString("C2")</td>
             <td class="text-end">
                 <a asp-action="Edit" asp-route-id="@invoice.Id" class="btn btn-sm btn-outline-primary">Edit</a>
             </td>

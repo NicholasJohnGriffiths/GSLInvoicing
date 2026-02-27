@@ -132,6 +132,7 @@ public class InvoicesControllerPageTests
         var client = new Client
         {
             Id = 1,
+            CardId = "1001",
             Name = "Test Client",
             GSTCode = "S",
             Rate = 120m,
@@ -223,6 +224,7 @@ public class InvoicesControllerPageTests
         Assert.Equal(3, lines.Length);
 
         var dataRows = lines.Skip(1).ToList();
+        Assert.All(dataRows, row => Assert.StartsWith("1001\t", row));
         Assert.All(dataRows, row => Assert.Contains("GSL9999", row));
         Assert.DoesNotContain(dataRows, row => row.Contains("GSL9998"));
         Assert.DoesNotContain(dataRows, row => row.Contains("GSL9997"));

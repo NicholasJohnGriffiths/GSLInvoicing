@@ -470,7 +470,7 @@ public class InvoicesController : Controller
 
         return
         [
-            invoice.ClientId.ToString(),
+            invoice.Client?.CardId ?? invoice.ClientId.ToString(),
             invoice.Client?.Name ?? string.Empty,
             string.Empty,
             invoice.InvoiceNumber,

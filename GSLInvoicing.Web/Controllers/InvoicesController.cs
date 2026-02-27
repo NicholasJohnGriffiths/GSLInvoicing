@@ -314,7 +314,10 @@ public class InvoicesController : Controller
                     Total = ii.Total
                 })
                 .ToList(),
-            NewItem = fallback?.NewItem ?? new AddInvoiceItemInput()
+            NewItem = fallback?.NewItem ?? new AddInvoiceItemInput
+            {
+                Rate = invoiceWithItems.Client.Rate
+            }
         };
     }
 

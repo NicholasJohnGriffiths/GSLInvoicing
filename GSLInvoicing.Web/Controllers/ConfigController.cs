@@ -16,39 +16,17 @@ public class ConfigController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var rows = await _context.Configs
-            .AsNoTracking()
-            .OrderBy(c => c.Id)
-            .ToListAsync();
-
-        return View(rows);
-    }
-
-    public IActionResult Create()
-    {
-        return View(new Config());
-    }
-
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,LastInvoiceNumber")] Config config)
-    {
-        if (!ModelState.IsValid)
-        {
-            return View(config);
-        }
-
-        _context.Configs.Add(config);
-        await _context.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
+        var config = await GetOrCreateSingleConfigAsync();
+        return View(config);
     }
 
     public async Task<IActionResult> Edit(int id)
     {
-        var config = await _context.Configs.FindAsync(id);
-        if (config == null)
+        var config = await GetOrCreateSingleConfigAsync();
+
+        if (id != config.Id)
         {
-            return NotFound();
+            return RedirectToAction(nameof(Edit), new { id = config.Id });
         }
 
         return View(config);
@@ -58,9 +36,11 @@ public class ConfigController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id, [Bind("Id,LastInvoiceNumber")] Config config)
     {
-        if (id != config.Id)
+        var currentConfig = await GetOrCreateSingleConfigAsync();
+
+        if (id != currentConfig.Id)
         {
-            return NotFound();
+            return RedirectToAction(nameof(Edit), new { id = currentConfig.Id });
         }
 
         if (!ModelState.IsValid)
@@ -68,36 +48,28 @@ public class ConfigController : Controller
             return View(config);
         }
 
-        _context.Update(config);
+        currentConfig.LastInvoiceNumber = config.LastInvoiceNumber;
         await _context.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction(nameof(Edit), new { id = currentConfig.Id });
     }
 
-    public async Task<IActionResult> Delete(int id)
+    private async Task<Config> GetOrCreateSingleConfigAsync()
     {
         var config = await _context.Configs
-            .AsNoTracking()
-            .FirstOrDefaultAsync(c => c.Id == id);
+            .OrderBy(c => c.Id)
+            .FirstOrDefaultAsync();
 
         if (config == null)
         {
-            return NotFound();
-        }
+            config = new Config
+            {
+                LastInvoiceNumber = "GSL0000"
+            };
 
-        return View(config);
-    }
-
-    [HttpPost, ActionName("Delete")]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(int id)
-    {
-        var config = await _context.Configs.FindAsync(id);
-        if (config != null)
-        {
-            _context.Configs.Remove(config);
+            _context.Configs.Add(config);
             await _context.SaveChangesAsync();
         }
 
-        return RedirectToAction(nameof(Index));
+        return config;
     }
 }

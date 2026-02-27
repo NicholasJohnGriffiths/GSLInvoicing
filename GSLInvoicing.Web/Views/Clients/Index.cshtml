@@ -1,0 +1,47 @@
+@model IEnumerable<GSLInvoicing.Web.Models.Client>
+
+@{
+    ViewData["Title"] = "Clients";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Clients</h1>
+    <div class="d-flex gap-2">
+        <a asp-action="ExportMyob" class="btn btn-outline-success">Export MYOB (Tab Delimited)</a>
+        <a asp-action="Create" class="btn btn-primary">New Client</a>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>GST Code</th>
+            <th>Rate</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Contact</td>
+            <td>@item.Email</td>
+            <td>@item.City</td>
+            <td>@item.Country</td>
+            <td>@item.GSTCode</td>
+            <td>@item.Rate.ToString("0.00")</td>
+            <td class="text-end">
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

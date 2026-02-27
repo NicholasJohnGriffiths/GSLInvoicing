@@ -1,0 +1,83 @@
+@model IEnumerable<GSLInvoicing.Web.Models.Invoice>
+
+@{
+    ViewData["Title"] = "Invoices";
+    var selectedYear = (int)ViewBag.SelectedYear;
+    var selectedMonth = (int)ViewBag.SelectedMonth;
+    var availableYears = (IEnumerable<int>)ViewBag.AvailableYears;
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Invoices</h1>
+    <div class="d-flex gap-2">
+        <a asp-action="Create" class="btn btn-primary">New Invoice</a>
+        <a asp-action="Export" asp-route-year="@selectedYear" asp-route-month="@selectedMonth" class="btn btn-outline-success">Export MYOB Sales (Tab Delimited)</a>
+    </div>
+</div>
+
+<form id="invoiceFilterForm" method="get" class="row g-2 align-items-end mb-3">
+    <div class="col-auto">
+        <label class="form-label" for="year">Year</label>
+        <select id="year" name="year" class="form-select" onchange="this.form.submit()">
+            @foreach (var year in availableYears)
+            {
+                if (year == selectedYear)
+                {
+                    <option value="@year" selected>@year</option>
+                }
+                else
+                {
+                    <option value="@year">@year</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="col-auto">
+        <label class="form-label" for="month">Month</label>
+        <select id="month" name="month" class="form-select" onchange="this.form.submit()">
+            @for (var month = 1; month <= 12; month++)
+            {
+                var monthName = new DateTime(2000, month, 1).ToString("MMMM");
+                if (month == selectedMonth)
+                {
+                    <option value="@month" selected>@monthName</option>
+                }
+                else
+                {
+                    <option value="@month">@monthName</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Invoice #</th>
+            <th>Date</th>
+            <th>Client</th>
+            <th>PO #</th>
+            <th>Total</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var invoice in Model)
+    {
+        <tr>
+            <td>@invoice.InvoiceNumber</td>
+            <td>@invoice.InvoiceDate</td>
+            <td>@invoice.Client.Name</td>
+            <td>@invoice.PONumber</td>
+            <td>@invoice.InvoiceItems.Sum(ii => ii.Total).ToString("0.00")</td>
+            <td class="text-end">
+                <a asp-action="Edit" asp-route-id="@invoice.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

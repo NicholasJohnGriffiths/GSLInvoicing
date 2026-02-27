@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="text-center">
+    <h1 class="display-5">GSL Invoicing</h1>
+    <p class="lead">Manage clients, invoices, and invoice items.</p>
+    <div class="d-flex justify-content-center gap-2">
+        <a class="btn btn-primary" asp-controller="Clients" asp-action="Index">Open Clients</a>
+        <a class="btn btn-outline-primary" asp-controller="Invoices" asp-action="Index">Open Invoices</a>
+    </div>
+</div>

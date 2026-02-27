@@ -1,0 +1,74 @@
+@model GSLInvoicing.Web.Models.Client
+
+@{
+    ViewData["Title"] = "Create Client";
+}
+
+<h1 class="h3">Create Client</h1>
+
+<form asp-action="Create" method="post" class="mt-3">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Contact" class="form-label"></label>
+        <input asp-for="Contact" class="form-control" />
+        <span asp-validation-for="Contact" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Street" class="form-label"></label>
+        <input asp-for="Street" class="form-control" />
+        <span asp-validation-for="Street" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Suburb" class="form-label"></label>
+        <input asp-for="Suburb" class="form-control" />
+        <span asp-validation-for="Suburb" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="City" class="form-label"></label>
+        <input asp-for="City" class="form-control" />
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Postcode" class="form-label"></label>
+        <input asp-for="Postcode" class="form-control" />
+        <span asp-validation-for="Postcode" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Country" class="form-label"></label>
+        <input asp-for="Country" class="form-control" />
+        <span asp-validation-for="Country" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="GSTCode" class="form-label"></label>
+        <input asp-for="GSTCode" class="form-control" />
+        <span asp-validation-for="GSTCode" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Rate" class="form-label"></label>
+        <input asp-for="Rate" class="form-control" />
+        <span asp-validation-for="Rate" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="DateCreated" class="form-label"></label>
+        <input asp-for="DateCreated" type="date" class="form-control" />
+        <span asp-validation-for="DateCreated" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-link">Back</a>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

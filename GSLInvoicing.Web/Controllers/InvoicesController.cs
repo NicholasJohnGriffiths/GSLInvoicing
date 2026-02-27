@@ -464,6 +464,9 @@ public class InvoicesController : Controller
         var amount = item?.Amount ?? 0m;
         var gst = item?.GST ?? 0m;
         var incGstTotal = amount + gst;
+        var description = item == null
+            ? string.Empty
+            : $"{item.Description} ({item.Hours:0.##} hrs)";
 
         return
         [
@@ -475,7 +478,7 @@ public class InvoicesController : Controller
             "1",
             invoice.PONumber ?? string.Empty,
             invoice.InvoiceDate.ToString("yyyy-MM-dd"),
-            item?.Description ?? string.Empty,
+            description,
             amount.ToString("0.00"),
             amount.ToString("0.00"),
             gst.ToString("0.00"),

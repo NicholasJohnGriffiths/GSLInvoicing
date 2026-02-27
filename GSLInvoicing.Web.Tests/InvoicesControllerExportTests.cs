@@ -226,8 +226,8 @@ public class InvoicesControllerPageTests
         Assert.All(dataRows, row => Assert.Contains("GSL9999", row));
         Assert.DoesNotContain(dataRows, row => row.Contains("GSL9998"));
         Assert.DoesNotContain(dataRows, row => row.Contains("GSL9997"));
-        Assert.Contains(dataRows, row => row.Contains("Line A"));
-        Assert.Contains(dataRows, row => row.Contains("Line B"));
+        Assert.Contains(dataRows, row => row.Contains("Line A (1 hrs)"));
+        Assert.Contains(dataRows, row => row.Contains("Line B (2 hrs)"));
     }
 
     private static AppDbContext CreateContext()

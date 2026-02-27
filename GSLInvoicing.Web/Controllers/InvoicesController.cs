@@ -262,6 +262,49 @@ public class InvoicesController : Controller
         return RedirectToAction(nameof(Edit), new { id });
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var invoice = await _context.Invoices
+            .Include(i => i.InvoiceItems)
+            .FirstOrDefaultAsync(i => i.Id == id);
+
+        if (invoice == null)
+        {
+            return NotFound();
+        }
+
+        if (invoice.InvoiceItems.Count > 0)
+        {
+            _context.InvoiceItems.RemoveRange(invoice.InvoiceItems);
+        }
+
+        _context.Invoices.Remove(invoice);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction(nameof(Index));
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteItem(int id, int itemId)
+    {
+        var item = await _context.InvoiceItems
+            .AsNoTracking()
+            .FirstOrDefaultAsync(ii => ii.Id == itemId && ii.InvoiceId == id);
+
+        if (item == null)
+        {
+            return NotFound();
+        }
+
+        _context.InvoiceItems.Remove(new InvoiceItem { Id = itemId });
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction(nameof(Edit), new { id });
+    }
+
     private async Task<InvoiceEditViewModel> BuildInvoiceEditViewModel(Invoice invoice, InvoiceEditViewModel? fallback = null)
     {
         var invoiceWithItems = await _context.Invoices

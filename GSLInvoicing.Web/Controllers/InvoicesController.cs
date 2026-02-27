@@ -472,7 +472,7 @@ public class InvoicesController : Controller
         [
             invoice.Client?.CardId ?? invoice.ClientId.ToString(),
             invoice.Client?.Name ?? string.Empty,
-            string.Empty,
+            "B",
             invoice.InvoiceNumber,
             "MISC",
             "1",
@@ -483,7 +483,7 @@ public class InvoicesController : Controller
             amount.ToString("0.00"),
             gst.ToString("0.00"),
             incGstTotal.ToString("0.00"),
-            invoice.Contact ?? string.Empty,
+            invoice.Client?.Contact ?? string.Empty,
             invoice.Client?.Name ?? string.Empty,
             invoice.Client?.GSTCode ?? string.Empty,
             "4",

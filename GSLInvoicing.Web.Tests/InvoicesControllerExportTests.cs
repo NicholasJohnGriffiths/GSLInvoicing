@@ -134,6 +134,7 @@ public class InvoicesControllerPageTests
             Id = 1,
             CardId = "1001",
             Name = "Test Client",
+            Contact = "Client Contact",
             GSTCode = "S",
             Rate = 120m,
             DateCreated = currentDate
@@ -225,6 +226,8 @@ public class InvoicesControllerPageTests
 
         var dataRows = lines.Skip(1).ToList();
         Assert.All(dataRows, row => Assert.StartsWith("1001\t", row));
+        Assert.All(dataRows, row => Assert.Contains("\tB\t", row));
+        Assert.All(dataRows, row => Assert.Contains("\tClient Contact\t", row));
         Assert.All(dataRows, row => Assert.Contains("GSL9999", row));
         Assert.DoesNotContain(dataRows, row => row.Contains("GSL9998"));
         Assert.DoesNotContain(dataRows, row => row.Contains("GSL9997"));

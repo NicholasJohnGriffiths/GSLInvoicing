@@ -34,7 +34,7 @@ public class ConfigController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,LastInvoiceNumber")] Config config)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,LastInvoiceNumber,LastCardId")] Config config)
     {
         var currentConfig = await GetOrCreateSingleConfigAsync();
 
@@ -49,6 +49,7 @@ public class ConfigController : Controller
         }
 
         currentConfig.LastInvoiceNumber = config.LastInvoiceNumber;
+        currentConfig.LastCardId = config.LastCardId;
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Edit), new { id = currentConfig.Id });
     }
@@ -63,7 +64,8 @@ public class ConfigController : Controller
         {
             config = new Config
             {
-                LastInvoiceNumber = "GSL0000"
+                LastInvoiceNumber = "GSL0000",
+                LastCardId = "0"
             };
 
             _context.Configs.Add(config);

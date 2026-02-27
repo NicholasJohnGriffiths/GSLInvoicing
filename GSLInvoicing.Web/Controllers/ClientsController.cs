@@ -2,6 +2,7 @@ using GSLInvoicing.Web.Data;
 using GSLInvoicing.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 using System.Text;
 
 namespace GSLInvoicing.Web.Controllers;
@@ -51,7 +52,7 @@ public class ClientsController : Controller
             var mappedValues = new Dictionary<string, string?>
             {
                 ["Co./Last Name"] = client.Name,
-                ["Card ID"] = client.Id.ToString(),
+                ["Card ID"] = client.CardId ?? client.Id.ToString(),
                 ["Card Status"] = "N",
                 ["Addr 1 - Line 1"] = client.Street,
                 ["Addr 1 - Line 2"] = client.Suburb,
@@ -115,8 +116,31 @@ public class ClientsController : Controller
             return View(client);
         }
 
+        await using var transaction = await _context.Database.BeginTransactionAsync(IsolationLevel.Serializable);
+
+        var config = await _context.Configs
+            .OrderBy(c => c.Id)
+            .FirstOrDefaultAsync();
+
+        if (config == null)
+        {
+            config = new Config
+            {
+                LastInvoiceNumber = "GSL0000",
+                LastCardId = "0"
+            };
+
+            _context.Configs.Add(config);
+            await _context.SaveChangesAsync();
+        }
+
+        var nextCardId = IncrementCardId(config.LastCardId);
+        config.LastCardId = nextCardId;
+        client.CardId = nextCardId;
+
         _context.Add(client);
         await _context.SaveChangesAsync();
+        await transaction.CommitAsync();
         return RedirectToAction(nameof(Index));
     }
 
@@ -138,7 +162,7 @@ public class ClientsController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Contact,Email,GSTCode,Rate,DateCreated,Street,Suburb,City,Postcode,Country")] Client client)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,CardId,Name,Contact,Email,GSTCode,Rate,DateCreated,Street,Suburb,City,Postcode,Country")] Client client)
     {
         if (id != client.Id)
         {
@@ -204,6 +228,16 @@ public class ClientsController : Controller
     private async Task<bool> ClientExists(int id)
     {
         return await _context.Clients.AnyAsync(e => e.Id == id);
+    }
+
+    private static string IncrementCardId(string? lastCardId)
+    {
+        if (!int.TryParse(lastCardId?.Trim(), out var number) || number < 0)
+        {
+            number = 0;
+        }
+
+        return (number + 1).ToString();
     }
 
     private static string EscapeTsv(string? value)

@@ -14,6 +14,7 @@
         <tr>
             <th>ID</th>
             <th>Last Invoice Number</th>
+            <th>Last Card ID</th>
             <th></th>
         </tr>
     </thead>
@@ -21,6 +22,7 @@
         <tr>
             <td>@Model.Id</td>
             <td>@Model.LastInvoiceNumber</td>
+            <td>@Model.LastCardId</td>
             <td class="text-end">
                 <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-primary">Edit</a>
             </td>

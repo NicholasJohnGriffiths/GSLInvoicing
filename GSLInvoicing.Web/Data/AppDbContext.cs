@@ -32,6 +32,10 @@ public partial class AppDbContext : DbContext
 
             entity.ToTable("Client");
 
+            entity.Property(e => e.CardId)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+
             entity.Property(e => e.City)
                 .HasMaxLength(255)
                 .IsUnicode(false);
@@ -66,6 +70,11 @@ public partial class AppDbContext : DbContext
         modelBuilder.Entity<Config>(entity =>
         {
             entity.ToTable("Config");
+
+            entity.Property(e => e.LastCardId)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasDefaultValue("0");
 
             entity.Property(e => e.LastInvoiceNumber)
                 .HasMaxLength(255)

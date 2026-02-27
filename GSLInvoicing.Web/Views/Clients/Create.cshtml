@@ -10,6 +10,11 @@
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <div class="mb-3">
+        <label asp-for="CardId" class="form-label"></label>
+        <input asp-for="CardId" class="form-control" value="Auto-generated from Config.LastCardId" readonly />
+    </div>
+
+    <div class="mb-3">
         <label asp-for="Name" class="form-label"></label>
         <input asp-for="Name" class="form-control" />
         <span asp-validation-for="Name" class="text-danger"></span>

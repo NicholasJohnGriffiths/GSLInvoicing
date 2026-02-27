@@ -9,39 +9,39 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GSLInvoicing.Web.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body class="bg-body-tertiary">
     @{
         var hideMenu = Context.Request.Path.StartsWithSegments("/Account/Login");
     }
     @if (!hideMenu)
     {
-        <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <header class="sticky-top">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
                 <div class="container-fluid">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GSL Invoicing</a>
+                    <a class="navbar-brand fw-semibold" asp-area="" asp-controller="Home" asp-action="Index">GSL Invoicing</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
+                    <div class="navbar-collapse collapse justify-content-between">
+                        <ul class="navbar-nav gap-lg-1">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link px-3 rounded-2" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Clients" asp-action="Index">Clients</a>
+                                <a class="nav-link px-3 rounded-2" asp-area="" asp-controller="Clients" asp-action="Index">Clients</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Invoices" asp-action="Index">Invoices</a>
+                                <a class="nav-link px-3 rounded-2" asp-area="" asp-controller="Invoices" asp-action="Index">Invoices</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Config" asp-action="Index">Config</a>
+                                <a class="nav-link px-3 rounded-2" asp-area="" asp-controller="Config" asp-action="Index">Config</a>
                             </li>
                         </ul>
                         @if (User.Identity?.IsAuthenticated ?? false)
                         {
                             <div class="d-flex align-items-center gap-2">
-                                <span class="text-muted small">@User.Identity!.Name</span>
+                                <span class="text-muted small d-none d-md-inline">@User.Identity!.Name</span>
                                 <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
                                     <button type="submit" class="btn btn-sm btn-outline-secondary">Logout</button>
                                 </form>
@@ -52,13 +52,13 @@
             </nav>
         </header>
     }
-    <div class="container">
+    <div class="container py-4">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted bg-white">
         <div class="container">
             &copy; 2026 - GSL Invoicing
         </div>

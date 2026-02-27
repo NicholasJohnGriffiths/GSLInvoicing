@@ -79,13 +79,22 @@
         foreach (var item in Model.Items)
         {
             <tr>
-                <td>@item.Description</td>
-                <td class="text-end">@item.Hours.ToString("0.##")</td>
-                <td class="text-end">@item.Rate.ToString("C2")</td>
+                <td>
+                    <input name="Description" form="edit-item-@item.Id" value="@item.Description" class="form-control form-control-sm" />
+                </td>
+                <td class="text-end">
+                    <input name="Hours" form="edit-item-@item.Id" value="@item.Hours.ToString("0.##")" class="form-control form-control-sm text-end" />
+                </td>
+                <td class="text-end">
+                    <input name="Rate" form="edit-item-@item.Id" value="@item.Rate.ToString("0.00")" class="form-control form-control-sm text-end" />
+                </td>
                 <td class="text-end">@item.Amount.ToString("C2")</td>
                 <td class="text-end">@item.GST.ToString("C2")</td>
                 <td class="text-end">@item.Total.ToString("C2")</td>
                 <td class="text-end">
+                    <form id="edit-item-@item.Id" asp-action="EditItem" asp-route-id="@Model.Id" asp-route-itemId="@item.Id" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-sm btn-outline-primary">Save</button>
+                    </form>
                     <form asp-action="DeleteItem" asp-route-id="@Model.Id" asp-route-itemId="@item.Id" method="post" class="d-inline" onsubmit="return confirm('Delete this invoice item? This cannot be undone.');">
                         <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
                     </form>

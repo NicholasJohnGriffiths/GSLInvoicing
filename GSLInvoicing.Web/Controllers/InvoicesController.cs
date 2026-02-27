@@ -305,6 +305,50 @@ public class InvoicesController : Controller
         return RedirectToAction(nameof(Edit), new { id });
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> EditItem(int id, int itemId, AddInvoiceItemInput updatedItem)
+    {
+        var invoice = await _context.Invoices
+            .Include(i => i.Client)
+            .FirstOrDefaultAsync(i => i.Id == id);
+
+        if (invoice == null)
+        {
+            return NotFound();
+        }
+
+        var item = await _context.InvoiceItems
+            .FirstOrDefaultAsync(ii => ii.Id == itemId && ii.InvoiceId == id);
+
+        if (item == null)
+        {
+            return NotFound();
+        }
+
+        if (!ModelState.IsValid)
+        {
+            TempData["InvoiceItemError"] = "Please enter valid Hours and Rate values.";
+            return RedirectToAction(nameof(Edit), new { id });
+        }
+
+        var gstRate = GetGstRate(invoice.Client.GSTCode);
+        var amount = Math.Round(updatedItem.Rate * (decimal)updatedItem.Hours, 2, MidpointRounding.AwayFromZero);
+        var gst = Math.Round(amount * gstRate, 2, MidpointRounding.AwayFromZero);
+        var total = amount + gst;
+
+        item.Description = updatedItem.Description;
+        item.Hours = updatedItem.Hours;
+        item.Rate = updatedItem.Rate;
+        item.Amount = amount;
+        item.GST = gst;
+        item.Total = total;
+
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction(nameof(Edit), new { id });
+    }
+
     private async Task<InvoiceEditViewModel> BuildInvoiceEditViewModel(Invoice invoice, InvoiceEditViewModel? fallback = null)
     {
         var invoiceWithItems = await _context.Invoices

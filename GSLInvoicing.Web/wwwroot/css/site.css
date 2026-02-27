@@ -40,6 +40,18 @@ h1, .h1, h2, .h2, h3, .h3 {
   white-space: nowrap;
 }
 
+.data-page {
+  font-size: 0.94rem;
+}
+
+.data-page .table {
+  font-size: 0.93rem;
+}
+
+.data-page .btn {
+  font-size: 0.9rem;
+}
+
 .form-control,
 .form-select,
 .btn {

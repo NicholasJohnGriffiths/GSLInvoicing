@@ -12,6 +12,10 @@
 <body class="bg-body-tertiary">
     @{
         var hideMenu = Context.Request.Path.StartsWithSegments("/Account/Login");
+        var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+        var action = ViewContext.RouteData.Values["action"]?.ToString();
+        var isDataPage = controller is "Clients" or "Invoices" or "Config";
+        var useFluidContainer = controller == "Clients" && action == "Index";
     }
     @if (!hideMenu)
     {
@@ -52,8 +56,8 @@
             </nav>
         </header>
     }
-    <div class="container py-4">
-        <main role="main" class="pb-3">
+    <div class="@(useFluidContainer ? "container-fluid py-4 px-4" : "container py-4")">
+        <main role="main" class="pb-3 @(isDataPage ? "data-page" : string.Empty)">
             @RenderBody()
         </main>
     </div>

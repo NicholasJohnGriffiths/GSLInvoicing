@@ -160,13 +160,6 @@ public class InvoicesController : Controller
 
         foreach (var invoice in invoices)
         {
-            if (invoice.InvoiceItems.Count == 0)
-            {
-                var rowWithoutItems = BuildInvoiceExportRow(invoice, null);
-                tsv.AppendLine(string.Join('\t', rowWithoutItems.Select(EscapeTsv)));
-                continue;
-            }
-
             foreach (var item in invoice.InvoiceItems.OrderBy(ii => ii.Id))
             {
                 var row = BuildInvoiceExportRow(invoice, item);

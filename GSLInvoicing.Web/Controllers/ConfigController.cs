@@ -1,10 +1,12 @@
 using GSLInvoicing.Web.Data;
 using GSLInvoicing.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace GSLInvoicing.Web.Controllers;
 
+[Authorize(Policy = "AdminOnly")]
 public class ConfigController : Controller
 {
     private readonly AppDbContext _context;

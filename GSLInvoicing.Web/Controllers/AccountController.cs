@@ -1,14 +1,24 @@
 using System.Security.Claims;
+using GSLInvoicing.Web.Data;
+using GSLInvoicing.Web.Models;
 using GSLInvoicing.Web.Models.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GSLInvoicing.Web.Controllers;
 
 public class AccountController : Controller
 {
+    private readonly AppDbContext _context;
+
+    public AccountController(AppDbContext context)
+    {
+        _context = context;
+    }
+
     [AllowAnonymous]
     public IActionResult Login(string? returnUrl = null)
     {
@@ -25,7 +35,12 @@ public class AccountController : Controller
             return View(model);
         }
 
-        if (!IsValidUser(model.Email, model.Password))
+        var appUser = await _context.AppUsers
+            .AsNoTracking()
+            .Include(u => u.Vendor)
+            .FirstOrDefaultAsync(u => u.UserName == model.UserName);
+
+        if (appUser == null || !string.Equals(appUser.Password, model.Password, StringComparison.Ordinal))
         {
             ModelState.AddModelError(string.Empty, "Invalid username or password.");
             return View(model);
@@ -33,9 +48,21 @@ public class AccountController : Controller
 
         var claims = new List<Claim>
         {
-            new(ClaimTypes.Name, model.Email),
-            new(ClaimTypes.Email, model.Email)
+            new(ClaimTypes.Name, appUser.UserName),
+            new(ClaimTypes.NameIdentifier, appUser.Id.ToString()),
+            new("VendorId", appUser.VendorId.ToString()),
+            new("UserType", ((int)appUser.UserType).ToString())
         };
+
+        if (!string.IsNullOrWhiteSpace(appUser.Vendor?.Name))
+        {
+            claims.Add(new Claim("VendorName", appUser.Vendor.Name));
+        }
+
+        if (appUser.UserType == UserType.Admin)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, "Admin"));
+        }
 
         var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
         var principal = new ClaimsPrincipal(identity);
@@ -45,12 +72,14 @@ public class AccountController : Controller
             principal,
             new AuthenticationProperties { IsPersistent = true });
 
-        if (!string.IsNullOrWhiteSpace(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
+        if (!string.IsNullOrWhiteSpace(model.ReturnUrl)
+            && Uri.TryCreate(model.ReturnUrl, UriKind.Relative, out _)
+            && model.ReturnUrl.StartsWith('/'))
         {
-            return Redirect(model.ReturnUrl);
+            return LocalRedirect(model.ReturnUrl);
         }
 
-        return RedirectToAction("Index", "Home");
+        return new RedirectToActionResult("Index", "Home", null);
     }
 
     [HttpPost]
@@ -59,16 +88,5 @@ public class AccountController : Controller
     {
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         return RedirectToAction(nameof(Login));
-    }
-
-    private static bool IsValidUser(string email, string password)
-    {
-        if (!string.Equals(password, "lesley01*", StringComparison.Ordinal))
-        {
-            return false;
-        }
-
-        return string.Equals(email, "nick@griffinsolutions.co.nz", StringComparison.OrdinalIgnoreCase)
-               || string.Equals(email, "lesley@griffinsolutions.co.nz", StringComparison.OrdinalIgnoreCase);
     }
 }

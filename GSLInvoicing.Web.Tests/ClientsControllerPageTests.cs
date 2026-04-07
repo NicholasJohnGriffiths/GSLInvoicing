@@ -1,7 +1,9 @@
+using System.Security.Claims;
 using System.Text;
 using GSLInvoicing.Web.Controllers;
 using GSLInvoicing.Web.Data;
 using GSLInvoicing.Web.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
@@ -28,6 +30,47 @@ public class ClientsControllerPageTests
         var view = Assert.IsType<ViewResult>(result);
         var model = Assert.IsAssignableFrom<IEnumerable<Client>>(view.Model);
         Assert.Single(model);
+    }
+
+    [Fact]
+    public async Task Index_With_Vendor_Claim_Returns_Only_Current_Vendor_Clients()
+    {
+        await using var context = CreateContext();
+        context.Clients.AddRange(
+            new Client
+            {
+                Name = "Vendor One Client",
+                VendorId = 1,
+                Rate = 100m,
+                DateCreated = DateOnly.FromDateTime(DateTime.Today)
+            },
+            new Client
+            {
+                Name = "Vendor Two Client",
+                VendorId = 2,
+                Rate = 100m,
+                DateCreated = DateOnly.FromDateTime(DateTime.Today)
+            });
+        await context.SaveChangesAsync();
+
+        var controller = new ClientsController(context);
+        controller.ControllerContext = new ControllerContext
+        {
+            HttpContext = new DefaultHttpContext
+            {
+                User = new ClaimsPrincipal(new ClaimsIdentity(
+                [
+                    new Claim("VendorId", "1")
+                ], "TestAuth"))
+            }
+        };
+
+        var result = await controller.Index();
+
+        var view = Assert.IsType<ViewResult>(result);
+        var model = Assert.IsAssignableFrom<IEnumerable<Client>>(view.Model).ToList();
+        Assert.Single(model);
+        Assert.Equal("Vendor One Client", model[0].Name);
     }
 
     [Fact]
@@ -97,6 +140,11 @@ public class ClientsControllerPageTests
 
         var file = Assert.IsType<FileContentResult>(result);
         Assert.Equal("text/tab-separated-values", file.ContentType);
+        Assert.False(
+            file.FileContents.Length >= 3
+            && file.FileContents[0] == 0xEF
+            && file.FileContents[1] == 0xBB
+            && file.FileContents[2] == 0xBF);
         var text = Encoding.UTF8.GetString(file.FileContents);
         Assert.Contains("Co./Last Name", text);
         Assert.Contains("Export Client", text);

@@ -14,8 +14,9 @@
         var hideMenu = Context.Request.Path.StartsWithSegments("/Account/Login");
         var controller = ViewContext.RouteData.Values["controller"]?.ToString();
         var action = ViewContext.RouteData.Values["action"]?.ToString();
-        var isDataPage = controller is "Clients" or "Invoices" or "Config";
+        var isDataPage = controller is "Clients" or "Invoices" or "Config" or "Vendors" or "AppUsers";
         var useFluidContainer = controller == "Clients" && action == "Index";
+        var isAdmin = User.FindFirst("UserType")?.Value == "1";
     }
     @if (!hideMenu)
     {
@@ -41,6 +42,18 @@
                             <li class="nav-item">
                                 <a class="nav-link px-3 rounded-2" asp-area="" asp-controller="Config" asp-action="Index">Config</a>
                             </li>
+                            @if (isAdmin)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link px-3 rounded-2" asp-area="" asp-controller="Vendors" asp-action="Index">Vendors</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link px-3 rounded-2 d-flex align-items-center gap-2" asp-area="" asp-controller="AppUsers" asp-action="Index">
+                                        <span>Users</span>
+                                        <span class="badge text-bg-primary">Admin</span>
+                                    </a>
+                                </li>
+                            }
                         </ul>
                         @if (User.Identity?.IsAuthenticated ?? false)
                         {

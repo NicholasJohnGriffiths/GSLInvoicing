@@ -1,0 +1,28 @@
+@model GSLInvoicing.Web.Models.AppUser
+
+@{
+    ViewData["Title"] = "Delete User";
+}
+
+<h1 class="h3 mb-3">Delete User</h1>
+
+<div class="card card-body shadow-sm">
+    <p>Are you sure you want to delete <strong>@Model.UserName</strong>?</p>
+
+    <dl class="row mb-0">
+        <dt class="col-sm-3">Email</dt>
+        <dd class="col-sm-9">@Model.Email</dd>
+        <dt class="col-sm-3">Phone</dt>
+        <dd class="col-sm-9">@Model.Phone</dd>
+        <dt class="col-sm-3">Vendor</dt>
+        <dd class="col-sm-9">@Model.Vendor?.Name</dd>
+        <dt class="col-sm-3">User Type</dt>
+        <dd class="col-sm-9">@Model.UserType</dd>
+    </dl>
+
+    <form asp-action="Delete" method="post" class="mt-3 d-flex gap-2">
+        <input asp-for="Id" type="hidden" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+    </form>
+</div>

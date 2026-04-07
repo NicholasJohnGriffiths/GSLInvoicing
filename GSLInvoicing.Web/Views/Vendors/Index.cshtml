@@ -1,0 +1,41 @@
+@model IEnumerable<GSLInvoicing.Web.Models.Vendor>
+
+@{
+    ViewData["Title"] = "Vendors";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Vendors</h1>
+    <a asp-action="Create" class="btn btn-primary">New Vendor</a>
+</div>
+
+<div class="card shadow-sm">
+    <div class="table-responsive">
+        <table class="table table-striped mb-0">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>GST Number</th>
+                    <th class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var vendor in Model)
+            {
+                <tr>
+                    <td>@vendor.Name</td>
+                    <td>@vendor.Email</td>
+                    <td>@vendor.Phone</td>
+                    <td>@vendor.GSTNumber</td>
+                    <td class="text-end">
+                        <a asp-action="Edit" asp-route-id="@vendor.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@vendor.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

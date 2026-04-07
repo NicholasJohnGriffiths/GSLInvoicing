@@ -47,16 +47,30 @@ public class InvoiceItemDisplayViewModel
     public decimal Total { get; set; }
 }
 
-public class AddInvoiceItemInput
+public class AddInvoiceItemInput : IValidatableObject
 {
-    [Required]
-    [Range(0.01, 1000000)]
-    public double Hours { get; set; }
+    [Range(0.01, 1000000, ErrorMessage = "Hours must be greater than 0.")]
+    public double? Hours { get; set; }
 
-    [Required]
-    [Range(0.01, 1000000)]
-    public decimal Rate { get; set; }
+    [Range(typeof(decimal), "0.01", "1000000", ErrorMessage = "Rate must be greater than 0.")]
+    public decimal? Rate { get; set; }
+
+    [Range(typeof(decimal), "0.01", "1000000", ErrorMessage = "Amount must be greater than 0.")]
+    public decimal? Amount { get; set; }
 
     [StringLength(2000)]
     public string? Description { get; set; }
+
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        var hasAmount = Amount.HasValue && Amount.Value > 0;
+        var hasHoursAndRate = Hours.HasValue && Hours.Value > 0 && Rate.HasValue && Rate.Value > 0;
+
+        if (!hasAmount && !hasHoursAndRate)
+        {
+            yield return new ValidationResult(
+                "Enter either Amount or both Hours and Rate.",
+                [nameof(Amount), nameof(Hours), nameof(Rate)]);
+        }
+    }
 }

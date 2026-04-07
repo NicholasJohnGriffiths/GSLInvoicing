@@ -1,11 +1,13 @@
 using GSLInvoicing.Web.Data;
 using GSLInvoicing.Web.Models;
 using GSLInvoicing.Web.Models.ViewModels;
+using GSLInvoicing.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
 using System.Data;
+using System.Security.Claims;
 
 namespace GSLInvoicing.Web.Controllers;
 
@@ -42,6 +44,12 @@ public class InvoicesController : Controller
 
     public async Task<IActionResult> Index(int? year, int? month)
     {
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null && IsAuthenticatedUser())
+        {
+            return Forbid();
+        }
+
         var today = DateTime.Today;
         var selectedYear = year ?? today.Year;
         var selectedMonth = month ?? today.Month;
@@ -53,6 +61,7 @@ public class InvoicesController : Controller
 
         var availableYears = await _context.Invoices
             .AsNoTracking()
+            .Where(i => !vendorId.HasValue || i.Client.VendorId == vendorId.Value)
             .Select(i => i.InvoiceDate.Year)
             .Distinct()
             .OrderByDescending(y => y)
@@ -68,7 +77,7 @@ public class InvoicesController : Controller
             .AsNoTracking()
             .Include(i => i.Client)
             .Include(i => i.InvoiceItems)
-            .Where(i => i.InvoiceDate.Year == selectedYear && i.InvoiceDate.Month == selectedMonth)
+            .Where(i => (!vendorId.HasValue || i.Client.VendorId == vendorId.Value) && i.InvoiceDate.Year == selectedYear && i.InvoiceDate.Month == selectedMonth)
             .OrderByDescending(i => i.InvoiceDate)
             .ThenByDescending(i => i.Id)
             .ToListAsync();
@@ -96,6 +105,23 @@ public class InvoicesController : Controller
     {
         if (!ModelState.IsValid)
         {
+            model.Clients = await GetClientsSelectList();
+            return View(model);
+        }
+
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null && IsAuthenticatedUser())
+        {
+            return Forbid();
+        }
+
+        var clientExists = await _context.Clients
+            .AsNoTracking()
+            .AnyAsync(c => c.Id == model.ClientId && (!vendorId.HasValue || c.VendorId == vendorId.Value));
+
+        if (!clientExists)
+        {
+            ModelState.AddModelError(nameof(model.ClientId), "Please select a valid client.");
             model.Clients = await GetClientsSelectList();
             return View(model);
         }
@@ -137,6 +163,12 @@ public class InvoicesController : Controller
     [HttpGet]
     public async Task<IActionResult> Export(int? year, int? month)
     {
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null && IsAuthenticatedUser())
+        {
+            return Forbid();
+        }
+
         var today = DateTime.Today;
         var selectedYear = year ?? today.Year;
         var selectedMonth = month ?? today.Month;
@@ -150,7 +182,7 @@ public class InvoicesController : Controller
             .AsNoTracking()
             .Include(i => i.Client)
             .Include(i => i.InvoiceItems)
-            .Where(i => i.InvoiceDate.Year == selectedYear && i.InvoiceDate.Month == selectedMonth)
+            .Where(i => (!vendorId.HasValue || i.Client.VendorId == vendorId.Value) && i.InvoiceDate.Year == selectedYear && i.InvoiceDate.Month == selectedMonth)
             .OrderBy(i => i.InvoiceDate)
             .ThenBy(i => i.Id)
             .ToListAsync();
@@ -160,24 +192,72 @@ public class InvoicesController : Controller
 
         foreach (var invoice in invoices)
         {
-            foreach (var item in invoice.InvoiceItems.OrderBy(ii => ii.Id))
+            var orderedItems = invoice.InvoiceItems.OrderBy(ii => ii.Id).ToList();
+            if (orderedItems.Count == 0)
+            {
+                continue;
+            }
+
+            foreach (var item in orderedItems)
             {
                 var row = BuildInvoiceExportRow(invoice, item);
                 tsv.AppendLine(string.Join('\t', row.Select(EscapeTsv)));
             }
+
+            tsv.AppendLine();
         }
 
         var fileName = $"invoices-export-{selectedYear:D4}-{selectedMonth:D2}.txt";
-        var bytes = Encoding.UTF8.GetPreamble().Concat(Encoding.UTF8.GetBytes(tsv.ToString())).ToArray();
+        var bytes = Encoding.UTF8.GetBytes(tsv.ToString());
         return File(bytes, "text/tab-separated-values", fileName);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Print(int id)
+    {
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null && IsAuthenticatedUser())
+        {
+            return Forbid();
+        }
+
+        var invoice = await _context.Invoices
+            .AsNoTracking()
+            .Include(i => i.Client)
+            .ThenInclude(c => c.Vendor)
+            .Include(i => i.InvoiceItems)
+            .FirstOrDefaultAsync(i => i.Id == id && (!vendorId.HasValue || i.Client.VendorId == vendorId.Value));
+
+        if (invoice == null)
+        {
+            return NotFound();
+        }
+
+        AppUser? appUser = null;
+        var appUserIdValue = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (int.TryParse(appUserIdValue, out var appUserId))
+        {
+            appUser = await _context.AppUsers
+                .AsNoTracking()
+                .FirstOrDefaultAsync(u => u.Id == appUserId);
+        }
+
+        var pdfBytes = InvoicePdfGenerator.Generate(invoice, appUser);
+        return File(pdfBytes, "application/pdf", $"{invoice.InvoiceNumber}.pdf");
     }
 
     public async Task<IActionResult> Edit(int id)
     {
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null && IsAuthenticatedUser())
+        {
+            return Forbid();
+        }
+
         var invoice = await _context.Invoices
             .Include(i => i.Client)
             .Include(i => i.InvoiceItems)
-            .FirstOrDefaultAsync(i => i.Id == id);
+            .FirstOrDefaultAsync(i => i.Id == id && (!vendorId.HasValue || i.Client.VendorId == vendorId.Value));
 
         if (invoice == null)
         {
@@ -197,7 +277,15 @@ public class InvoicesController : Controller
             return NotFound();
         }
 
-        var invoice = await _context.Invoices.FirstOrDefaultAsync(i => i.Id == id);
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null && IsAuthenticatedUser())
+        {
+            return Forbid();
+        }
+
+        var invoice = await _context.Invoices
+            .Include(i => i.Client)
+            .FirstOrDefaultAsync(i => i.Id == id && (!vendorId.HasValue || i.Client.VendorId == vendorId.Value));
         if (invoice == null)
         {
             return NotFound();
@@ -225,9 +313,15 @@ public class InvoicesController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> AddItem(int id, AddInvoiceItemInput newItem)
     {
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null && IsAuthenticatedUser())
+        {
+            return Forbid();
+        }
+
         var invoice = await _context.Invoices
             .Include(i => i.Client)
-            .FirstOrDefaultAsync(i => i.Id == id);
+            .FirstOrDefaultAsync(i => i.Id == id && (!vendorId.HasValue || i.Client.VendorId == vendorId.Value));
 
         if (invoice == null)
         {
@@ -236,12 +330,12 @@ public class InvoicesController : Controller
 
         if (!ModelState.IsValid)
         {
-            TempData["InvoiceItemError"] = "Please enter valid Hours and Rate values.";
+            TempData["InvoiceItemError"] = "Please enter either Amount or both Hours and Rate values.";
             return RedirectToAction(nameof(Edit), new { id });
         }
 
         var gstRate = GetGstRate(invoice.Client.GSTCode);
-        var amount = Math.Round(newItem.Rate * (decimal)newItem.Hours, 2, MidpointRounding.AwayFromZero);
+        var (hours, rate, amount) = ResolveLineValues(newItem);
         var gst = Math.Round(amount * gstRate, 2, MidpointRounding.AwayFromZero);
         var total = amount + gst;
 
@@ -249,8 +343,8 @@ public class InvoicesController : Controller
         {
             InvoiceId = id,
             Description = newItem.Description,
-            Hours = newItem.Hours,
-            Rate = newItem.Rate,
+            Hours = hours,
+            Rate = rate,
             Amount = amount,
             GST = gst,
             Total = total
@@ -266,9 +360,16 @@ public class InvoicesController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Delete(int id)
     {
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null && IsAuthenticatedUser())
+        {
+            return Forbid();
+        }
+
         var invoice = await _context.Invoices
             .Include(i => i.InvoiceItems)
-            .FirstOrDefaultAsync(i => i.Id == id);
+            .Include(i => i.Client)
+            .FirstOrDefaultAsync(i => i.Id == id && (!vendorId.HasValue || i.Client.VendorId == vendorId.Value));
 
         if (invoice == null)
         {
@@ -290,9 +391,19 @@ public class InvoicesController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteItem(int id, int itemId)
     {
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null && IsAuthenticatedUser())
+        {
+            return Forbid();
+        }
+
         var item = await _context.InvoiceItems
             .AsNoTracking()
-            .FirstOrDefaultAsync(ii => ii.Id == itemId && ii.InvoiceId == id);
+            .Where(ii => ii.Id == itemId && ii.InvoiceId == id)
+            .Join(_context.Invoices.Include(i => i.Client), ii => ii.InvoiceId, i => i.Id, (ii, i) => new { Item = ii, Invoice = i })
+            .Where(x => !vendorId.HasValue || x.Invoice.Client.VendorId == vendorId.Value)
+            .Select(x => x.Item)
+            .FirstOrDefaultAsync();
 
         if (item == null)
         {
@@ -309,9 +420,15 @@ public class InvoicesController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> EditItem(int id, int itemId, AddInvoiceItemInput updatedItem)
     {
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null && IsAuthenticatedUser())
+        {
+            return Forbid();
+        }
+
         var invoice = await _context.Invoices
             .Include(i => i.Client)
-            .FirstOrDefaultAsync(i => i.Id == id);
+            .FirstOrDefaultAsync(i => i.Id == id && (!vendorId.HasValue || i.Client.VendorId == vendorId.Value));
 
         if (invoice == null)
         {
@@ -328,18 +445,18 @@ public class InvoicesController : Controller
 
         if (!ModelState.IsValid)
         {
-            TempData["InvoiceItemError"] = "Please enter valid Hours and Rate values.";
+            TempData["InvoiceItemError"] = "Please enter either Amount or both Hours and Rate values.";
             return RedirectToAction(nameof(Edit), new { id });
         }
 
         var gstRate = GetGstRate(invoice.Client.GSTCode);
-        var amount = Math.Round(updatedItem.Rate * (decimal)updatedItem.Hours, 2, MidpointRounding.AwayFromZero);
+        var (hours, rate, amount) = ResolveLineValues(updatedItem);
         var gst = Math.Round(amount * gstRate, 2, MidpointRounding.AwayFromZero);
         var total = amount + gst;
 
         item.Description = updatedItem.Description;
-        item.Hours = updatedItem.Hours;
-        item.Rate = updatedItem.Rate;
+        item.Hours = hours;
+        item.Rate = rate;
         item.Amount = amount;
         item.GST = gst;
         item.Total = total;
@@ -357,8 +474,11 @@ public class InvoicesController : Controller
             .Include(i => i.InvoiceItems)
             .FirstAsync(i => i.Id == invoice.Id);
 
+        var vendorId = GetCurrentVendorId();
+
         var clients = await _context.Clients
             .AsNoTracking()
+            .Where(c => !vendorId.HasValue || c.VendorId == vendorId.Value)
             .OrderBy(c => c.Name)
             .Select(c => new SelectListItem
             {
@@ -401,6 +521,21 @@ public class InvoicesController : Controller
         };
     }
 
+    private static (double Hours, decimal Rate, decimal Amount) ResolveLineValues(AddInvoiceItemInput item)
+    {
+        var hasHoursAndRate = item.Hours.HasValue && item.Hours.Value > 0 && item.Rate.HasValue && item.Rate.Value > 0;
+        if (hasHoursAndRate)
+        {
+            var hours = item.Hours!.Value;
+            var rate = item.Rate!.Value;
+            var calculatedAmount = Math.Round(rate * (decimal)hours, 2, MidpointRounding.AwayFromZero);
+            return (hours, rate, calculatedAmount);
+        }
+
+        var amount = Math.Round(item.Amount ?? 0m, 2, MidpointRounding.AwayFromZero);
+        return (0d, 0m, amount);
+    }
+
     private static decimal GetGstRate(string? gstCode)
     {
         return string.Equals(gstCode?.Trim(), "S", StringComparison.OrdinalIgnoreCase) ? 0.15m : 0m;
@@ -408,8 +543,15 @@ public class InvoicesController : Controller
 
     private async Task<List<SelectListItem>> GetClientsSelectList()
     {
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null && IsAuthenticatedUser())
+        {
+            return [];
+        }
+
         return await _context.Clients
             .AsNoTracking()
+            .Where(c => !vendorId.HasValue || c.VendorId == vendorId.Value)
             .OrderBy(c => c.Name)
             .Select(c => new SelectListItem
             {
@@ -417,6 +559,17 @@ public class InvoicesController : Controller
                 Text = c.Name
             })
             .ToListAsync();
+    }
+
+    private int? GetCurrentVendorId()
+    {
+        var claimValue = ControllerContext?.HttpContext?.User?.FindFirst("VendorId")?.Value;
+        return int.TryParse(claimValue, out var vendorId) ? vendorId : null;
+    }
+
+    private bool IsAuthenticatedUser()
+    {
+        return ControllerContext?.HttpContext?.User?.Identity?.IsAuthenticated ?? false;
     }
 
     private static string IncrementInvoiceNumber(string? lastInvoiceNumber)
@@ -466,7 +619,9 @@ public class InvoicesController : Controller
         var incGstTotal = amount + gst;
         var description = item == null
             ? string.Empty
-            : $"{item.Description} ({item.Hours:0.##} hrs)";
+            : item.Hours > 0
+                ? $"{item.Description} ({item.Hours:0.##} hrs)"
+                : item.Description ?? string.Empty;
 
         return
         [
@@ -477,14 +632,14 @@ public class InvoicesController : Controller
             "MISC",
             "1",
             invoice.PONumber ?? string.Empty,
-            invoice.InvoiceDate.ToString("yyyy-MM-dd"),
+            invoice.InvoiceDate.ToString("dd/MM/yyyy"),
             description,
             amount.ToString("0.00"),
             amount.ToString("0.00"),
             gst.ToString("0.00"),
             incGstTotal.ToString("0.00"),
             invoice.Client?.Contact ?? string.Empty,
-            invoice.Client?.Name ?? string.Empty,
+            invoice.Client is null ? string.Empty : $"Sale; {invoice.Client.Name}",
             invoice.Client?.GSTCode ?? string.Empty,
             "4",
             "20"

@@ -16,6 +16,8 @@ public partial class AppDbContext : DbContext
     {
     }
 
+    public virtual DbSet<AppUser> AppUsers { get; set; }
+
     public virtual DbSet<Client> Clients { get; set; }
 
     public virtual DbSet<Config> Configs { get; set; }
@@ -24,8 +26,53 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<InvoiceItem> InvoiceItems { get; set; }
 
+    public virtual DbSet<Vendor> Vendors { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<AppUser>(entity =>
+        {
+            entity.ToTable("AppUser");
+
+            entity.Property(e => e.Email)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Password)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Phone)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.UserName)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.Vendor).WithMany(p => p.AppUsers)
+                .HasForeignKey(d => d.VendorId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_AppUser_Vendor");
+        });
+
+        modelBuilder.Entity<Vendor>(entity =>
+        {
+            entity.ToTable("Vendor");
+
+            entity.Property(e => e.Address).IsUnicode(false);
+            entity.Property(e => e.BankDetails).IsUnicode(false);
+            entity.Property(e => e.Email)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.GSTNumber)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Name)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Phone)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<Client>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Client__3214EC0727AB62F1");
@@ -65,6 +112,11 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.Suburb)
                 .HasMaxLength(255)
                 .IsUnicode(false);
+
+            entity.HasOne(d => d.Vendor).WithMany(p => p.Clients)
+                .HasForeignKey(d => d.VendorId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Client_Vendor");
         });
 
         modelBuilder.Entity<Config>(entity =>

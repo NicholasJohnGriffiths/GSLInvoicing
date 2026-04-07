@@ -1,7 +1,11 @@
 using GSLInvoicing.Web.Data;
+using GSLInvoicing.Web.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using QuestPDF.Infrastructure;
+
+QuestPDF.Settings.License = LicenseType.Community;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +25,8 @@ builder.Services.AddAuthorization(options =>
     options.FallbackPolicy = new AuthorizationPolicyBuilder()
         .RequireAuthenticatedUser()
         .Build();
+    options.AddPolicy("AdminOnly", policy =>
+        policy.RequireClaim("UserType", ((int)UserType.Admin).ToString()));
 });
 
 var app = builder.Build();

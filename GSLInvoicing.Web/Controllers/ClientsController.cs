@@ -28,8 +28,15 @@ public class ClientsController : Controller
 
     public async Task<IActionResult> Index()
     {
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null && IsAuthenticatedUser())
+        {
+            return Forbid();
+        }
+
         var clients = await _context.Clients
             .AsNoTracking()
+            .Where(c => !vendorId.HasValue || c.VendorId == vendorId.Value)
             .OrderBy(c => c.Name)
             .ToListAsync();
 
@@ -39,8 +46,15 @@ public class ClientsController : Controller
     [HttpGet]
     public async Task<IActionResult> ExportMyob()
     {
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null && IsAuthenticatedUser())
+        {
+            return Forbid();
+        }
+
         var clients = await _context.Clients
             .AsNoTracking()
+            .Where(c => !vendorId.HasValue || c.VendorId == vendorId.Value)
             .OrderBy(c => c.Name)
             .ToListAsync();
 
@@ -79,7 +93,7 @@ public class ClientsController : Controller
         }
 
         var fileName = $"clients-myob-{DateTime.Now:yyyyMMdd}.txt";
-        var bytes = Encoding.UTF8.GetPreamble().Concat(Encoding.UTF8.GetBytes(tsv.ToString())).ToArray();
+        var bytes = Encoding.UTF8.GetBytes(tsv.ToString());
         return File(bytes, "text/tab-separated-values", fileName);
     }
 
@@ -90,9 +104,15 @@ public class ClientsController : Controller
             return NotFound();
         }
 
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null && IsAuthenticatedUser())
+        {
+            return Forbid();
+        }
+
         var client = await _context.Clients
             .AsNoTracking()
-            .FirstOrDefaultAsync(m => m.Id == id);
+            .FirstOrDefaultAsync(m => m.Id == id && (!vendorId.HasValue || m.VendorId == vendorId.Value));
 
         if (client == null)
         {
@@ -115,6 +135,14 @@ public class ClientsController : Controller
         {
             return View(client);
         }
+
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null)
+        {
+            return Forbid();
+        }
+
+        client.VendorId = vendorId.Value;
 
         await using var transaction = await _context.Database.BeginTransactionAsync(IsolationLevel.Serializable);
 
@@ -151,7 +179,13 @@ public class ClientsController : Controller
             return NotFound();
         }
 
-        var client = await _context.Clients.FindAsync(id);
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null && IsAuthenticatedUser())
+        {
+            return Forbid();
+        }
+
+        var client = await _context.Clients.FirstOrDefaultAsync(c => c.Id == id && (!vendorId.HasValue || c.VendorId == vendorId.Value));
         if (client == null)
         {
             return NotFound();
@@ -174,9 +208,33 @@ public class ClientsController : Controller
             return View(client);
         }
 
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null && IsAuthenticatedUser())
+        {
+            return Forbid();
+        }
+
         try
         {
-            _context.Update(client);
+            var existingClient = await _context.Clients.FirstOrDefaultAsync(c => c.Id == id && (!vendorId.HasValue || c.VendorId == vendorId.Value));
+            if (existingClient == null)
+            {
+                return NotFound();
+            }
+
+            existingClient.CardId = client.CardId;
+            existingClient.Name = client.Name;
+            existingClient.Contact = client.Contact;
+            existingClient.Email = client.Email;
+            existingClient.GSTCode = client.GSTCode;
+            existingClient.Rate = client.Rate;
+            existingClient.DateCreated = client.DateCreated;
+            existingClient.Street = client.Street;
+            existingClient.Suburb = client.Suburb;
+            existingClient.City = client.City;
+            existingClient.Postcode = client.Postcode;
+            existingClient.Country = client.Country;
+
             await _context.SaveChangesAsync();
         }
         catch (DbUpdateConcurrencyException)
@@ -199,9 +257,15 @@ public class ClientsController : Controller
             return NotFound();
         }
 
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null && IsAuthenticatedUser())
+        {
+            return Forbid();
+        }
+
         var client = await _context.Clients
             .AsNoTracking()
-            .FirstOrDefaultAsync(m => m.Id == id);
+            .FirstOrDefaultAsync(m => m.Id == id && (!vendorId.HasValue || m.VendorId == vendorId.Value));
 
         if (client == null)
         {
@@ -215,7 +279,13 @@ public class ClientsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        var client = await _context.Clients.FindAsync(id);
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null && IsAuthenticatedUser())
+        {
+            return Forbid();
+        }
+
+        var client = await _context.Clients.FirstOrDefaultAsync(c => c.Id == id && (!vendorId.HasValue || c.VendorId == vendorId.Value));
         if (client != null)
         {
             _context.Clients.Remove(client);
@@ -227,7 +297,19 @@ public class ClientsController : Controller
 
     private async Task<bool> ClientExists(int id)
     {
-        return await _context.Clients.AnyAsync(e => e.Id == id);
+        var vendorId = GetCurrentVendorId();
+        return await _context.Clients.AnyAsync(e => e.Id == id && (!vendorId.HasValue || e.VendorId == vendorId.Value));
+    }
+
+    private int? GetCurrentVendorId()
+    {
+        var claimValue = ControllerContext?.HttpContext?.User?.FindFirst("VendorId")?.Value;
+        return int.TryParse(claimValue, out var vendorId) ? vendorId : null;
+    }
+
+    private bool IsAuthenticatedUser()
+    {
+        return ControllerContext?.HttpContext?.User?.Identity?.IsAuthenticated ?? false;
     }
 
     private static string IncrementCardId(string? lastCardId)

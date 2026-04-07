@@ -7,6 +7,8 @@ public partial class Client
 {
     public int Id { get; set; }
 
+    public int VendorId { get; set; }
+
     public string? CardId { get; set; }
 
     public string Name { get; set; } = null!;
@@ -30,6 +32,8 @@ public partial class Client
     public string? Postcode { get; set; }
 
     public string? Country { get; set; }
+
+    public virtual Vendor Vendor { get; set; } = null!;
 
     public virtual ICollection<Invoice> Invoices { get; set; } = new List<Invoice>();
 }

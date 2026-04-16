@@ -14,8 +14,9 @@
         var hideMenu = Context.Request.Path.StartsWithSegments("/Account/Login");
         var controller = ViewContext.RouteData.Values["controller"]?.ToString();
         var action = ViewContext.RouteData.Values["action"]?.ToString();
-        var isDataPage = controller is "Clients" or "Invoices" or "Config" or "Vendors" or "AppUsers";
-        var useFluidContainer = controller == "Clients" && action == "Index";
+        var isDataPage = controller is "Clients" or "Invoices" or "Transactions" or "TransactionTemplates" or "Statements" or "Config" or "Vendors" or "AppUsers";
+        var useFluidContainer = (controller == "Clients" && action == "Index")
+            || controller == "Transactions";
         var isAdmin = User.FindFirst("UserType")?.Value == "1";
     }
     @if (!hideMenu)
@@ -38,6 +39,16 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link px-3 rounded-2" asp-area="" asp-controller="Invoices" asp-action="Index">Invoices</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle px-3 rounded-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Transactions
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Transactions" asp-action="Index">Transactions</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="TransactionTemplates" asp-action="Index">Transaction Templates</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Statements" asp-action="Index">Statements</a></li>
+                                </ul>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link px-3 rounded-2" asp-area="" asp-controller="Config" asp-action="Index">Config</a>

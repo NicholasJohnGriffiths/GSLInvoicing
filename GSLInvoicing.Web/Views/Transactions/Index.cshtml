@@ -1,0 +1,231 @@
+@model IEnumerable<GSLInvoicing.Web.Models.Transaction>
+
+@{
+    ViewData["Title"] = "Transactions";
+    var selectedClientId = ViewBag.SelectedClientId as int?;
+    var sortBy = ViewBag.SortBy as string ?? "TransDate";
+    var direction = ViewBag.Direction as string ?? "desc";
+    var importPreview = ViewBag.ImportPreview as GSLInvoicing.Web.Models.ViewModels.TransactionImportPreview;
+    var previewPayload = ViewBag.PreviewPayload as string;
+    var importMessage = ViewBag.ImportMessage as string;
+    var statusMessage = ViewBag.StatusMessage as string;
+    var templateFolderPath = ViewBag.TemplateFolderPath as string;
+    var clientOptions = ViewBag.ClientOptions as List<SelectListItem> ?? new List<SelectListItem>();
+
+    string NextDirection(string field)
+    {
+        return string.Equals(sortBy, field, StringComparison.OrdinalIgnoreCase) && direction == "asc" ? "desc" : "asc";
+    }
+
+}
+
+<style>
+    .transactions-page {
+        font-size: 0.94rem;
+    }
+
+    .transactions-page .table {
+        font-size: 0.9rem;
+    }
+</style>
+
+<div class="transactions-page">
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Transactions</h1>
+    <div class="d-flex gap-2">
+        <a asp-controller="TransactionTemplates" asp-action="Index" class="btn btn-outline-secondary">Transaction Templates</a>
+        <a asp-action="Create" class="btn btn-primary">New Transaction</a>
+    </div>
+</div>
+
+@if (!string.IsNullOrWhiteSpace(statusMessage))
+{
+    <div class="alert alert-success">@statusMessage</div>
+}
+
+@if (!string.IsNullOrWhiteSpace(importMessage))
+{
+    <div class="alert alert-warning">@importMessage</div>
+}
+
+<div class="card card-body mb-3">
+    <h2 class="h5">Import Transactions from Excel</h2>
+    <form asp-action="PreviewImport" method="post" enctype="multipart/form-data" class="row g-2 align-items-end">
+        @Html.AntiForgeryToken()
+        <div class="col-md-4">
+            <label for="templateFolderPath" class="form-label">Template Folder</label>
+            <input id="templateFolderPath" name="templateFolderPath" class="form-control" value="@templateFolderPath" placeholder="Absolute path or relative to app root" />
+        </div>
+        <div class="col-md-4">
+            <label for="templateName" class="form-label">Template</label>
+            <select id="templateName" name="templateName" asp-items="ViewBag.TemplateOptions" class="form-select">
+                <option value="">Select template</option>
+            </select>
+        </div>
+        <div class="col-md-5">
+            <label for="excelFile" class="form-label">Excel File</label>
+            <input id="excelFile" name="excelFile" type="file" class="form-control" accept=".xlsx,.xls" />
+        </div>
+        <input type="hidden" name="clientId" value="@selectedClientId" />
+        <input type="hidden" name="sortBy" value="@sortBy" />
+        <input type="hidden" name="direction" value="@direction" />
+        <div class="col-md-3 d-flex gap-2">
+            <button type="submit" class="btn btn-outline-primary">Preview Import</button>
+        </div>
+    </form>
+</div>
+
+@if (importPreview != null)
+{
+    <div class="card card-body mb-3">
+        <form asp-action="ConfirmImport" method="post">
+            @Html.AntiForgeryToken()
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="h5 mb-0">Import Preview: @importPreview.TemplateName</h2>
+                <div class="d-flex gap-2 align-items-center">
+                    <span class="badge text-bg-success">Matched/Selected: Green</span>
+                    <span class="badge text-bg-danger">No Client: Red</span>
+                    <button type="submit" class="btn btn-success">Import Valid Rows</button>
+                </div>
+            </div>
+
+            <input type="hidden" name="clientId" value="@selectedClientId" />
+            <input type="hidden" name="sortBy" value="@sortBy" />
+            <input type="hidden" name="direction" value="@direction" />
+            <input type="hidden" name="templateFolderPath" value="@templateFolderPath" />
+            <input type="hidden" name="previewPayload" value="@previewPayload" />
+
+            <div class="table-responsive mt-3">
+                <table class="table table-sm table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th>Row</th>
+                            <th>Client Match</th>
+                            <th>Select Client</th>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Title</th>
+                            <th>Detail</th>
+                            <th>Particulars</th>
+                            <th>Code</th>
+                            <th>Reference</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var row in importPreview.Rows)
+                    {
+                        var hasClient = row.MatchedClientId.HasValue;
+                        <tr class="@(hasClient ? "table-success" : "table-danger")">
+                            <td>
+                                @row.RowNumber
+                                <input type="hidden" name="previewRowNumbers" value="@row.RowNumber" />
+                            </td>
+                            <td>
+                                <div>@(row.MatchedClientName ?? "No automatic match")</div>
+                                <div class="small text-muted">@row.MatchReason</div>
+                            </td>
+                            <td>
+                                <select name="selectedClientIds" class="form-select form-select-sm">
+                                    <option value="">No client</option>
+                                    @foreach (var option in clientOptions)
+                                    {
+                                        var isSelected = option.Value == row.MatchedClientId?.ToString();
+                                        if (isSelected)
+                                        {
+                                            <option value="@option.Value" selected>@option.Text</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@option.Value">@option.Text</option>
+                                        }
+                                    }
+                                </select>
+                            </td>
+                            <td>@(row.TransDate?.ToString("yyyy-MM-dd HH:mm"))</td>
+                            <td>@row.TransType</td>
+                            <td>@row.Title</td>
+                            <td>@row.Detail</td>
+                            <td>@row.Particulars</td>
+                            <td>@row.Code</td>
+                            <td>@row.Reference</td>
+                            <td>@(row.Amount?.ToString("C2"))</td>
+                            <td>
+                                @if (!string.IsNullOrWhiteSpace(row.Error))
+                                {
+                                    <span class="text-danger">@row.Error</span>
+                                }
+                                else if (hasClient)
+                                {
+                                    <span class="text-success">Ready</span>
+                                }
+                                else
+                                {
+                                    <span class="text-danger">Select a client to import</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+}
+
+<form asp-action="Index" method="get" class="row g-2 align-items-end mb-3">
+    <div class="col-sm-6 col-md-4 col-lg-3">
+        <label for="clientId" class="form-label">Filter by Client</label>
+        <select id="clientId" name="clientId" asp-items="ViewBag.ClientOptions" class="form-select">
+            <option value="">All clients</option>
+        </select>
+    </div>
+    <input type="hidden" name="sortBy" value="@sortBy" />
+    <input type="hidden" name="direction" value="@direction" />
+    <input type="hidden" name="templateFolderPath" value="@templateFolderPath" />
+    <div class="col-auto">
+        <button type="submit" class="btn btn-outline-primary">Apply</button>
+    </div>
+    <div class="col-auto">
+        <a asp-action="Index" asp-route-templateFolderPath="@templateFolderPath" class="btn btn-outline-secondary">Clear</a>
+    </div>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-striped table-sm align-middle">
+        <thead>
+            <tr>
+                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-sortBy="TransDate" asp-route-direction="@NextDirection("TransDate")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Date</a></th>
+                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-sortBy="Client" asp-route-direction="@NextDirection("Client")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Client</a></th>
+                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-sortBy="TransType" asp-route-direction="@NextDirection("TransType")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Type</a></th>
+                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-sortBy="Title" asp-route-direction="@NextDirection("Title")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Title</a></th>
+                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-sortBy="Reference" asp-route-direction="@NextDirection("Reference")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Reference</a></th>
+                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-sortBy="Amount" asp-route-direction="@NextDirection("Amount")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Amount</a></th>
+                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-sortBy="AccountNumber" asp-route-direction="@NextDirection("AccountNumber")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Account</a></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TransDate.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@item.Client?.Name</td>
+                <td>@item.TransType</td>
+                <td>@item.Title</td>
+                <td>@item.Reference</td>
+                <td>@item.Amount.ToString("C2")</td>
+                <td>@item.AccountNumber</td>
+                <td class="text-end text-nowrap">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+</div>

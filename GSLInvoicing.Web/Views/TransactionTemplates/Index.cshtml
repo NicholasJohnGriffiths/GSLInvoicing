@@ -1,0 +1,180 @@
+@model GSLInvoicing.Web.Models.ViewModels.TransactionTemplatePageViewModel
+
+@{
+    ViewData["Title"] = "Transaction Templates";
+
+    var headerOptions = Model.SampleHeaders
+        .Where(h => !string.IsNullOrWhiteSpace(h))
+        .Distinct(StringComparer.OrdinalIgnoreCase)
+        .ToList();
+
+    var selectedHeaders = new[]
+    {
+        Model.Editor.TransDateColumn,
+        Model.Editor.TransTypeColumn,
+        Model.Editor.DetailColumn,
+        Model.Editor.ParticularsColumn,
+        Model.Editor.CodeColumn,
+        Model.Editor.ReferenceColumn,
+        Model.Editor.AmountColumn,
+        Model.Editor.AccountNumberColumn
+    };
+
+    foreach (var selected in selectedHeaders)
+    {
+        if (!string.IsNullOrWhiteSpace(selected)
+            && !headerOptions.Contains(selected, StringComparer.OrdinalIgnoreCase))
+        {
+            headerOptions.Add(selected);
+        }
+    }
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Transaction Templates</h1>
+</div>
+
+@if (!string.IsNullOrWhiteSpace(Model.StatusMessage))
+{
+    <div class="alert alert-info">@Model.StatusMessage</div>
+}
+
+<div class="row g-4">
+    <div class="col-lg-4">
+        <div class="card card-body">
+            <h2 class="h5">Load Existing Template</h2>
+            <form asp-action="Index" method="get" class="mb-3">
+                <div class="mb-2">
+                    <label asp-for="TemplateFolderPath" class="form-label">Template Folder</label>
+                    <input asp-for="TemplateFolderPath" class="form-control" placeholder="Absolute path or relative to app root" />
+                    <div class="form-text">Leave blank to use default: TransactionTemplates</div>
+                </div>
+                <div class="mb-2">
+                    <label for="templateName" class="form-label">Template</label>
+                    <select id="templateName" name="templateName" class="form-select">
+                        <option value="">Select...</option>
+                        @foreach (var name in Model.ExistingTemplates)
+                        {
+                            <option value="@name">@name</option>
+                        }
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-outline-primary">Load</button>
+            </form>
+
+            <h2 class="h5">Import Template File</h2>
+            <form asp-action="Import" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <input asp-for="TemplateFolderPath" type="hidden" />
+                <div class="mb-2">
+                    <label asp-for="TemplateFile" class="form-label">Template JSON/TXT file</label>
+                    <input asp-for="TemplateFile" type="file" class="form-control" accept=".json,.txt" />
+                </div>
+                <button type="submit" class="btn btn-outline-secondary">Import Template</button>
+            </form>
+
+            <hr />
+
+            <h2 class="h5">Load Excel Headers</h2>
+            <form asp-action="LoadHeaders" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <input asp-for="TemplateFolderPath" type="hidden" />
+                <div class="mb-2">
+                    <label asp-for="SampleExcelFile" class="form-label">Sample Excel file</label>
+                    <input asp-for="SampleExcelFile" type="file" class="form-control" accept=".xlsx,.xls" />
+                    <span asp-validation-for="SampleExcelFile" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-outline-primary">Load Headers</button>
+            </form>
+
+            @if (Model.SampleHeaders.Count > 0)
+            {
+                <div class="mt-3">
+                    <div class="fw-semibold">Detected Headers</div>
+                    <ul class="small mb-0">
+                        @foreach (var header in Model.SampleHeaders)
+                        {
+                            <li>@header</li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col-lg-8">
+        <div class="card card-body">
+            <h2 class="h5">Create or Edit Template</h2>
+            <form asp-action="Save" method="post">
+                @Html.AntiForgeryToken()
+                <input asp-for="TemplateFolderPath" type="hidden" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Editor.Name" class="form-label">Template Name</label>
+                    <input asp-for="Editor.Name" class="form-control" />
+                    <span asp-validation-for="Editor.Name" class="text-danger"></span>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label asp-for="Editor.TransDateColumn" class="form-label">TransDate Header</label>
+                        <select asp-for="Editor.TransDateColumn" class="form-select" asp-items="new SelectList(headerOptions)">
+                            <option value="">Select header...</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Editor.TransTypeColumn" class="form-label">TransType Header</label>
+                        <select asp-for="Editor.TransTypeColumn" class="form-select" asp-items="new SelectList(headerOptions)">
+                            <option value="">Select header...</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Editor.DetailColumn" class="form-label">Detail Header</label>
+                        <select asp-for="Editor.DetailColumn" class="form-select" asp-items="new SelectList(headerOptions)">
+                            <option value="">Select header...</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Editor.ParticularsColumn" class="form-label">Particulars Header</label>
+                        <select asp-for="Editor.ParticularsColumn" class="form-select" asp-items="new SelectList(headerOptions)">
+                            <option value="">Select header...</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Editor.CodeColumn" class="form-label">Code Header</label>
+                        <select asp-for="Editor.CodeColumn" class="form-select" asp-items="new SelectList(headerOptions)">
+                            <option value="">Select header...</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Editor.ReferenceColumn" class="form-label">Reference Header</label>
+                        <select asp-for="Editor.ReferenceColumn" class="form-select" asp-items="new SelectList(headerOptions)">
+                            <option value="">Select header...</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Editor.AmountColumn" class="form-label">Amount Header</label>
+                        <select asp-for="Editor.AmountColumn" class="form-select" asp-items="new SelectList(headerOptions)">
+                            <option value="">Select header...</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Editor.AccountNumberColumn" class="form-label">AccountNumber Header</label>
+                        <select asp-for="Editor.AccountNumberColumn" class="form-select" asp-items="new SelectList(headerOptions)">
+                            <option value="">Select header...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-primary">Save Template</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

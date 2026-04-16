@@ -1,7 +1,9 @@
 using GSLInvoicing.Web.Data;
 using GSLInvoicing.Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System.Data;
 using System.Text;
 
@@ -26,17 +28,47 @@ public class ClientsController : Controller
         _context = context;
     }
 
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int? vendorId = null)
     {
-        var vendorId = GetCurrentVendorId();
-        if (vendorId == null && IsAuthenticatedUser())
+        var isAdmin = IsAdminUser();
+        var currentVendorId = GetCurrentVendorId();
+
+        if (!isAdmin && currentVendorId == null && IsAuthenticatedUser())
         {
             return Forbid();
         }
 
-        var clients = await _context.Clients
-            .AsNoTracking()
-            .Where(c => !vendorId.HasValue || c.VendorId == vendorId.Value)
+        IQueryable<Client> query = _context.Clients.AsNoTracking();
+
+        if (isAdmin)
+        {
+            query = query.Include(c => c.Vendor);
+
+            var vendorOptions = await _context.Vendors
+                .AsNoTracking()
+                .OrderBy(v => v.Name)
+                .Select(v => new SelectListItem
+                {
+                    Value = v.Id.ToString(),
+                    Text = v.Name
+                })
+                .ToListAsync();
+
+            ViewBag.AllowVendorFilter = true;
+            ViewBag.VendorFilterOptions = vendorOptions;
+            ViewBag.SelectedVendorId = vendorId;
+
+            if (vendorId.HasValue && vendorId.Value > 0)
+            {
+                query = query.Where(c => c.VendorId == vendorId.Value);
+            }
+        }
+        else if (currentVendorId.HasValue)
+        {
+            query = query.Where(c => c.VendorId == currentVendorId.Value);
+        }
+
+        var clients = await query
             .OrderBy(c => c.Name)
             .ToListAsync();
 
@@ -44,17 +76,30 @@ public class ClientsController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> ExportMyob()
+    public async Task<IActionResult> ExportMyob(int? vendorId = null)
     {
-        var vendorId = GetCurrentVendorId();
-        if (vendorId == null && IsAuthenticatedUser())
+        var isAdmin = IsAdminUser();
+        var currentVendorId = GetCurrentVendorId();
+
+        if (!isAdmin && currentVendorId == null && IsAuthenticatedUser())
         {
             return Forbid();
         }
 
-        var clients = await _context.Clients
-            .AsNoTracking()
-            .Where(c => !vendorId.HasValue || c.VendorId == vendorId.Value)
+        IQueryable<Client> query = _context.Clients.AsNoTracking();
+        if (isAdmin)
+        {
+            if (vendorId.HasValue && vendorId.Value > 0)
+            {
+                query = query.Where(c => c.VendorId == vendorId.Value);
+            }
+        }
+        else if (currentVendorId.HasValue)
+        {
+            query = query.Where(c => c.VendorId == currentVendorId.Value);
+        }
+
+        var clients = await query
             .OrderBy(c => c.Name)
             .ToListAsync();
 
@@ -104,15 +149,16 @@ public class ClientsController : Controller
             return NotFound();
         }
 
+        var isAdmin = IsAdminUser();
         var vendorId = GetCurrentVendorId();
-        if (vendorId == null && IsAuthenticatedUser())
+        if (!isAdmin && vendorId == null && IsAuthenticatedUser())
         {
             return Forbid();
         }
 
         var client = await _context.Clients
             .AsNoTracking()
-            .FirstOrDefaultAsync(m => m.Id == id && (!vendorId.HasValue || m.VendorId == vendorId.Value));
+            .FirstOrDefaultAsync(m => m.Id == id && (isAdmin || !vendorId.HasValue || m.VendorId == vendorId.Value));
 
         if (client == null)
         {
@@ -124,52 +170,103 @@ public class ClientsController : Controller
 
     public IActionResult Create()
     {
-        return View(new Client { DateCreated = DateOnly.FromDateTime(DateTime.Today) });
+        var vendorId = GetCurrentVendorId();
+        var client = new Client
+        {
+            DateCreated = DateOnly.FromDateTime(DateTime.Today),
+            VendorId = vendorId ?? 0
+        };
+
+        return CreateViewWithVendors(client);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Name,Contact,Email,GSTCode,Rate,DateCreated,Street,Suburb,City,Postcode,Country")] Client client)
+    public async Task<IActionResult> Create([Bind("Name,Contact,Email,TransactionReference,BankAccount,Notes,GSTCode,Rate,DateCreated,Street,Suburb,City,Postcode,Country,VendorId")] Client client)
     {
-        if (!ModelState.IsValid)
-        {
-            return View(client);
-        }
-
+        var isAdmin = IsAdminUser();
         var vendorId = GetCurrentVendorId();
-        if (vendorId == null)
+
+        if (!isAdmin && vendorId == null)
         {
             return Forbid();
         }
 
-        client.VendorId = vendorId.Value;
-
-        await using var transaction = await _context.Database.BeginTransactionAsync(IsolationLevel.Serializable);
-
-        var config = await _context.Configs
-            .OrderBy(c => c.Id)
-            .FirstOrDefaultAsync();
-
-        if (config == null)
+        if (isAdmin)
         {
-            config = new Config
-            {
-                LastInvoiceNumber = "GSL0000",
-                LastCardId = "0"
-            };
+            var adminVendorIds = await _context.Vendors
+                .AsNoTracking()
+                .OrderBy(v => v.Name)
+                .Select(v => v.Id)
+                .ToListAsync();
 
-            _context.Configs.Add(config);
-            await _context.SaveChangesAsync();
+            if (adminVendorIds.Count == 1)
+            {
+                client.VendorId = adminVendorIds[0];
+            }
+
+            if (client.VendorId <= 0)
+            {
+                ModelState.AddModelError(nameof(Client.VendorId), "Vendor is required.");
+            }
+            else if (!adminVendorIds.Contains(client.VendorId))
+            {
+                ModelState.AddModelError(nameof(Client.VendorId), "Selected vendor was not found.");
+            }
+        }
+        else
+        {
+            client.VendorId = vendorId!.Value;
         }
 
-        var nextCardId = IncrementCardId(config.LastCardId);
-        config.LastCardId = nextCardId;
-        client.CardId = nextCardId;
+        if (!ModelState.IsValid)
+        {
+            return CreateViewWithVendors(client);
+        }
 
-        _context.Add(client);
-        await _context.SaveChangesAsync();
-        await transaction.CommitAsync();
-        return RedirectToAction(nameof(Index));
+        try
+        {
+            IDbContextTransaction? transaction = null;
+            if (_context.Database.IsRelational())
+            {
+                transaction = await _context.Database.BeginTransactionAsync(IsolationLevel.Serializable);
+            }
+
+            var config = await _context.Configs
+                .OrderBy(c => c.Id)
+                .FirstOrDefaultAsync();
+
+            if (config == null)
+            {
+                config = new Config
+                {
+                    LastInvoiceNumber = "GSL0000",
+                    LastCardId = "0"
+                };
+
+                _context.Configs.Add(config);
+                await _context.SaveChangesAsync();
+            }
+
+            var nextCardId = IncrementCardId(config.LastCardId);
+            config.LastCardId = nextCardId;
+            client.CardId = nextCardId;
+
+            _context.Add(client);
+            await _context.SaveChangesAsync();
+
+            if (transaction != null)
+            {
+                await transaction.CommitAsync();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+        catch (DbUpdateException)
+        {
+            ModelState.AddModelError(string.Empty, "Unable to save client right now. Please check the form values and try again.");
+            return View(client);
+        }
     }
 
     public async Task<IActionResult> Edit(int? id)
@@ -179,44 +276,75 @@ public class ClientsController : Controller
             return NotFound();
         }
 
+        var isAdmin = IsAdminUser();
         var vendorId = GetCurrentVendorId();
-        if (vendorId == null && IsAuthenticatedUser())
+        if (!isAdmin && vendorId == null && IsAuthenticatedUser())
         {
             return Forbid();
         }
 
-        var client = await _context.Clients.FirstOrDefaultAsync(c => c.Id == id && (!vendorId.HasValue || c.VendorId == vendorId.Value));
+        var client = await _context.Clients.FirstOrDefaultAsync(c => c.Id == id && (isAdmin || !vendorId.HasValue || c.VendorId == vendorId.Value));
         if (client == null)
         {
             return NotFound();
         }
 
-        return View(client);
+        return CreateViewWithVendors(client);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,CardId,Name,Contact,Email,GSTCode,Rate,DateCreated,Street,Suburb,City,Postcode,Country")] Client client)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,CardId,Name,Contact,Email,TransactionReference,BankAccount,Notes,GSTCode,Rate,DateCreated,Street,Suburb,City,Postcode,Country,VendorId")] Client client)
     {
         if (id != client.Id)
         {
             return NotFound();
         }
 
-        if (!ModelState.IsValid)
-        {
-            return View(client);
-        }
-
+        var isAdmin = IsAdminUser();
         var vendorId = GetCurrentVendorId();
-        if (vendorId == null && IsAuthenticatedUser())
+
+        if (!isAdmin && vendorId == null && IsAuthenticatedUser())
         {
             return Forbid();
         }
 
+        if (isAdmin)
+        {
+            var adminVendorIds = await _context.Vendors
+                .AsNoTracking()
+                .OrderBy(v => v.Name)
+                .Select(v => v.Id)
+                .ToListAsync();
+
+            if (adminVendorIds.Count == 1)
+            {
+                client.VendorId = adminVendorIds[0];
+            }
+
+            if (client.VendorId <= 0)
+            {
+                ModelState.AddModelError(nameof(Client.VendorId), "Vendor is required.");
+            }
+            else if (!adminVendorIds.Contains(client.VendorId))
+            {
+                ModelState.AddModelError(nameof(Client.VendorId), "Selected vendor was not found.");
+            }
+        }
+
+        if (!ModelState.IsValid)
+        {
+            if (!isAdmin && vendorId.HasValue)
+            {
+                client.VendorId = vendorId.Value;
+            }
+
+            return CreateViewWithVendors(client);
+        }
+
         try
         {
-            var existingClient = await _context.Clients.FirstOrDefaultAsync(c => c.Id == id && (!vendorId.HasValue || c.VendorId == vendorId.Value));
+            var existingClient = await _context.Clients.FirstOrDefaultAsync(c => c.Id == id && (isAdmin || !vendorId.HasValue || c.VendorId == vendorId.Value));
             if (existingClient == null)
             {
                 return NotFound();
@@ -226,6 +354,9 @@ public class ClientsController : Controller
             existingClient.Name = client.Name;
             existingClient.Contact = client.Contact;
             existingClient.Email = client.Email;
+            existingClient.TransactionReference = client.TransactionReference;
+            existingClient.BankAccount = client.BankAccount;
+            existingClient.Notes = client.Notes;
             existingClient.GSTCode = client.GSTCode;
             existingClient.Rate = client.Rate;
             existingClient.DateCreated = client.DateCreated;
@@ -234,6 +365,7 @@ public class ClientsController : Controller
             existingClient.City = client.City;
             existingClient.Postcode = client.Postcode;
             existingClient.Country = client.Country;
+            existingClient.VendorId = isAdmin ? client.VendorId : vendorId ?? existingClient.VendorId;
 
             await _context.SaveChangesAsync();
         }
@@ -246,6 +378,16 @@ public class ClientsController : Controller
 
             throw;
         }
+        catch (DbUpdateException)
+        {
+            ModelState.AddModelError(string.Empty, "Unable to save client right now. Please check the form values and try again.");
+            if (!isAdmin && vendorId.HasValue)
+            {
+                client.VendorId = vendorId.Value;
+            }
+
+            return CreateViewWithVendors(client);
+        }
 
         return RedirectToAction(nameof(Index));
     }
@@ -257,15 +399,16 @@ public class ClientsController : Controller
             return NotFound();
         }
 
+        var isAdmin = IsAdminUser();
         var vendorId = GetCurrentVendorId();
-        if (vendorId == null && IsAuthenticatedUser())
+        if (!isAdmin && vendorId == null && IsAuthenticatedUser())
         {
             return Forbid();
         }
 
         var client = await _context.Clients
             .AsNoTracking()
-            .FirstOrDefaultAsync(m => m.Id == id && (!vendorId.HasValue || m.VendorId == vendorId.Value));
+            .FirstOrDefaultAsync(m => m.Id == id && (isAdmin || !vendorId.HasValue || m.VendorId == vendorId.Value));
 
         if (client == null)
         {
@@ -279,13 +422,14 @@ public class ClientsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
+        var isAdmin = IsAdminUser();
         var vendorId = GetCurrentVendorId();
-        if (vendorId == null && IsAuthenticatedUser())
+        if (!isAdmin && vendorId == null && IsAuthenticatedUser())
         {
             return Forbid();
         }
 
-        var client = await _context.Clients.FirstOrDefaultAsync(c => c.Id == id && (!vendorId.HasValue || c.VendorId == vendorId.Value));
+        var client = await _context.Clients.FirstOrDefaultAsync(c => c.Id == id && (isAdmin || !vendorId.HasValue || c.VendorId == vendorId.Value));
         if (client != null)
         {
             _context.Clients.Remove(client);
@@ -297,8 +441,9 @@ public class ClientsController : Controller
 
     private async Task<bool> ClientExists(int id)
     {
+        var isAdmin = IsAdminUser();
         var vendorId = GetCurrentVendorId();
-        return await _context.Clients.AnyAsync(e => e.Id == id && (!vendorId.HasValue || e.VendorId == vendorId.Value));
+        return await _context.Clients.AnyAsync(e => e.Id == id && (isAdmin || !vendorId.HasValue || e.VendorId == vendorId.Value));
     }
 
     private int? GetCurrentVendorId()
@@ -310,6 +455,45 @@ public class ClientsController : Controller
     private bool IsAuthenticatedUser()
     {
         return ControllerContext?.HttpContext?.User?.Identity?.IsAuthenticated ?? false;
+    }
+
+    private bool IsAdminUser()
+    {
+        return ControllerContext?.HttpContext?.User?.FindFirst("UserType")?.Value == ((int)UserType.Admin).ToString();
+    }
+
+    private ViewResult CreateViewWithVendors(Client client)
+    {
+        var allowVendorSelection = IsAdminUser();
+        ViewBag.AllowVendorSelection = allowVendorSelection;
+        ViewBag.IsVendorSelectionLocked = false;
+
+        if (allowVendorSelection)
+        {
+            var vendorOptions = _context.Vendors
+                .AsNoTracking()
+                .OrderBy(v => v.Name)
+                .Select(v => new SelectListItem
+                {
+                    Value = v.Id.ToString(),
+                    Text = v.Name
+                })
+                .ToList();
+
+            if (vendorOptions.Count == 1)
+            {
+                if (client.VendorId <= 0)
+                {
+                    client.VendorId = int.Parse(vendorOptions[0].Value!);
+                }
+
+                ViewBag.IsVendorSelectionLocked = true;
+            }
+
+            ViewBag.VendorOptions = vendorOptions;
+        }
+
+        return View(client);
     }
 
     private static string IncrementCardId(string? lastCardId)

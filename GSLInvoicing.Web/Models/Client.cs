@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace GSLInvoicing.Web.Models;
 
@@ -17,6 +18,12 @@ public partial class Client
 
     public string? Email { get; set; }
 
+    public string? TransactionReference { get; set; }
+
+    public string? BankAccount { get; set; }
+
+    public string? Notes { get; set; }
+
     public string? GSTCode { get; set; }
 
     public decimal Rate { get; set; }
@@ -33,7 +40,10 @@ public partial class Client
 
     public string? Country { get; set; }
 
+    [ValidateNever]
     public virtual Vendor Vendor { get; set; } = null!;
 
     public virtual ICollection<Invoice> Invoices { get; set; } = new List<Invoice>();
+
+    public virtual ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
 }

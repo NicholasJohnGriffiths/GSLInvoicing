@@ -1,0 +1,46 @@
+@model GSLInvoicing.Web.Models.Transaction
+
+@{
+    ViewData["Title"] = "Transaction Details";
+}
+
+<h1 class="h3">Transaction Details</h1>
+
+<div class="card card-body mt-3">
+    <dl class="row mb-0">
+        <dt class="col-sm-3">Client</dt>
+        <dd class="col-sm-9">@Model.Client?.Name</dd>
+
+        <dt class="col-sm-3">Date</dt>
+        <dd class="col-sm-9">@Model.TransDate.ToString("yyyy-MM-dd HH:mm")</dd>
+
+        <dt class="col-sm-3">Type</dt>
+        <dd class="col-sm-9">@Model.TransType</dd>
+
+        <dt class="col-sm-3">Title</dt>
+        <dd class="col-sm-9">@Model.Title</dd>
+
+        <dt class="col-sm-3">Detail</dt>
+        <dd class="col-sm-9">@Model.Detail</dd>
+
+        <dt class="col-sm-3">Particulars</dt>
+        <dd class="col-sm-9">@Model.Particulars</dd>
+
+        <dt class="col-sm-3">Code</dt>
+        <dd class="col-sm-9">@Model.Code</dd>
+
+        <dt class="col-sm-3">Reference</dt>
+        <dd class="col-sm-9">@Model.Reference</dd>
+
+        <dt class="col-sm-3">Amount</dt>
+        <dd class="col-sm-9">@Model.Amount.ToString("C2")</dd>
+
+        <dt class="col-sm-3">Account Number</dt>
+        <dd class="col-sm-9">@Model.AccountNumber</dd>
+    </dl>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-link">Back</a>
+</div>

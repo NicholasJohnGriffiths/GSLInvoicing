@@ -2,13 +2,40 @@
 
 @{
     ViewData["Title"] = "Edit Client";
+    var isVendorSelectionLocked = ViewBag.IsVendorSelectionLocked == true;
 }
 
 <h1 class="h3">Edit Client</h1>
 
-<form asp-action="Edit" method="post" class="mt-3">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form asp-controller="Clients" asp-action="Edit" asp-route-id="@Model.Id" method="post" class="mt-3" novalidate>
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="All" class="text-danger"></div>
     <input asp-for="Id" type="hidden" />
+
+    @if (ViewBag.AllowVendorSelection == true)
+    {
+        <div class="mb-3">
+            <label asp-for="VendorId" class="form-label">Vendor</label>
+            @if (isVendorSelectionLocked)
+            {
+                <select asp-for="VendorId" asp-items="ViewBag.VendorOptions" class="form-select" disabled>
+                    <option value="">Select vendor</option>
+                </select>
+                <input asp-for="VendorId" type="hidden" />
+            }
+            else
+            {
+                <select asp-for="VendorId" asp-items="ViewBag.VendorOptions" class="form-select">
+                    <option value="">Select vendor</option>
+                </select>
+            }
+            <span asp-validation-for="VendorId" class="text-danger"></span>
+        </div>
+    }
+    else
+    {
+        <input asp-for="VendorId" type="hidden" />
+    }
 
     <div class="mb-3">
         <label asp-for="CardId" class="form-label"></label>
@@ -30,6 +57,21 @@
         <label asp-for="Email" class="form-label"></label>
         <input asp-for="Email" class="form-control" />
         <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TransactionReference" class="form-label">Transaction Reference</label>
+        <input asp-for="TransactionReference" class="form-control" />
+        <span asp-validation-for="TransactionReference" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="BankAccount" class="form-label">Bank Account</label>
+        <input asp-for="BankAccount" class="form-control" />
+        <span asp-validation-for="BankAccount" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Notes" class="form-label">Notes</label>
+        <textarea asp-for="Notes" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="Notes" class="text-danger"></span>
     </div>
     <div class="mb-3">
         <label asp-for="Street" class="form-label"></label>
@@ -68,7 +110,7 @@
     </div>
     <div class="mb-3">
         <label asp-for="DateCreated" class="form-label"></label>
-        <input asp-for="DateCreated" type="date" class="form-control" />
+        <input asp-for="DateCreated" asp-format="{0:yyyy-MM-dd}" type="date" class="form-control" />
         <span asp-validation-for="DateCreated" class="text-danger"></span>
     </div>
 

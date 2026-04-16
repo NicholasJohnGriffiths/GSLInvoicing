@@ -26,6 +26,8 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<InvoiceItem> InvoiceItems { get; set; }
 
+    public virtual DbSet<Transaction> Transactions { get; set; }
+
     public virtual DbSet<Vendor> Vendors { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -83,6 +85,10 @@ public partial class AppDbContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false);
 
+            entity.Property(e => e.BankAccount)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+
             entity.Property(e => e.City)
                 .HasMaxLength(255)
                 .IsUnicode(false);
@@ -96,11 +102,17 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.Email)
                 .HasMaxLength(255)
                 .IsUnicode(false);
+            entity.Property(e => e.TransactionReference)
+                .HasMaxLength(255)
+                .IsUnicode(false);
             entity.Property(e => e.GSTCode)
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.Name)
                 .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Notes)
+                .HasColumnType("text")
                 .IsUnicode(false);
             entity.Property(e => e.Postcode)
                 .HasMaxLength(50)
@@ -170,6 +182,40 @@ public partial class AppDbContext : DbContext
             entity.HasOne(d => d.Invoice).WithMany(p => p.InvoiceItems)
                 .HasForeignKey(d => d.InvoiceId)
                 .HasConstraintName("FK_InvoiceItem_Invoice");
+        });
+
+        modelBuilder.Entity<Transaction>(entity =>
+        {
+            entity.ToTable("Transaction");
+
+            entity.Property(e => e.AccountNumber)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Amount).HasColumnType("money");
+            entity.Property(e => e.Code)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Detail)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Particulars)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Reference)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Title)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.TransDate).HasColumnType("datetime");
+            entity.Property(e => e.TransType)
+                .HasMaxLength(10)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.Client).WithMany(p => p.Transactions)
+                .HasForeignKey(d => d.ClientId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Transaction_Client");
         });
 
         OnModelCreatingPartial(modelBuilder);

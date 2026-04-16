@@ -1,0 +1,75 @@
+@model GSLInvoicing.Web.Models.Transaction
+
+@{
+    ViewData["Title"] = "Edit Transaction";
+}
+
+<h1 class="h3">Edit Transaction</h1>
+
+<form asp-action="Edit" method="post" class="mt-3">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input asp-for="Id" type="hidden" />
+
+    <div class="mb-3">
+        <label asp-for="ClientId" class="form-label">Client</label>
+        <select asp-for="ClientId" asp-items="ViewBag.ClientOptions" class="form-select">
+            <option value="">Select client</option>
+        </select>
+        <span asp-validation-for="ClientId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="TransDate" class="form-label"></label>
+        <input asp-for="TransDate" type="datetime-local" asp-format="{0:yyyy-MM-ddTHH:mm}" class="form-control" />
+        <span asp-validation-for="TransDate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="TransType" class="form-label">Type</label>
+        <select asp-for="TransType" asp-items="ViewBag.TransTypeOptions" class="form-select"></select>
+        <span asp-validation-for="TransType" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Detail" class="form-label"></label>
+        <input asp-for="Detail" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Particulars" class="form-label"></label>
+        <input asp-for="Particulars" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Code" class="form-label"></label>
+        <input asp-for="Code" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Reference" class="form-label"></label>
+        <input asp-for="Reference" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Amount" class="form-label"></label>
+        <input asp-for="Amount" class="form-control" />
+        <span asp-validation-for="Amount" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="AccountNumber" class="form-label"></label>
+        <input asp-for="AccountNumber" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-link">Back</a>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

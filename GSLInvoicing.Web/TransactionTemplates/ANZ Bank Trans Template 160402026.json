@@ -1,0 +1,11 @@
+{
+  "Name": "ANZ Bank Trans Template 160402026",
+  "TransDateColumn": "Transaction Date",
+  "TransTypeColumn": "Type",
+  "DetailColumn": "Details",
+  "ParticularsColumn": "Particulars",
+  "CodeColumn": "Code",
+  "ReferenceColumn": "Reference",
+  "AmountColumn": "Amount",
+  "AccountNumberColumn": "To/From Account Number"
+}

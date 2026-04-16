@@ -1,0 +1,17 @@
+SET ANSI_NULLS ON;
+SET QUOTED_IDENTIFIER ON;
+GO
+
+IF COL_LENGTH('dbo.Client', 'BankAccount') IS NULL
+BEGIN
+    ALTER TABLE dbo.Client
+    ADD BankAccount VARCHAR(255) NULL;
+END
+GO
+
+IF COL_LENGTH('dbo.Client', 'Notes') IS NULL
+BEGIN
+    ALTER TABLE dbo.Client
+    ADD Notes TEXT NULL;
+END
+GO

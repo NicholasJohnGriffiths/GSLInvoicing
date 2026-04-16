@@ -2,15 +2,34 @@
 
 @{
     ViewData["Title"] = "Clients";
+    var allowVendorFilter = ViewBag.AllowVendorFilter == true;
 }
 
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h1 class="h3 mb-0">Clients</h1>
     <div class="d-flex gap-2">
-        <a asp-action="ExportMyob" class="btn btn-outline-success">Export MYOB (Tab Delimited)</a>
+        <a asp-action="ExportMyob" asp-route-vendorId="@ViewBag.SelectedVendorId" class="btn btn-outline-success">Export MYOB (Tab Delimited)</a>
         <a asp-action="Create" class="btn btn-primary">New Client</a>
     </div>
 </div>
+
+@if (allowVendorFilter)
+{
+    <form asp-action="Index" method="get" class="row g-2 align-items-end mb-3">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <label for="vendorId" class="form-label">Filter by Vendor</label>
+            <select id="vendorId" name="vendorId" asp-items="ViewBag.VendorFilterOptions" class="form-select">
+                <option value="">All vendors</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-outline-primary">Apply</button>
+        </div>
+        <div class="col-auto">
+            <a asp-action="Index" class="btn btn-outline-secondary">Clear</a>
+        </div>
+    </form>
+}
 
 <div class="table-responsive">
     <table class="table table-striped table-sm align-middle">
@@ -18,8 +37,14 @@
             <tr>
                 <th>Card ID</th>
                 <th>Name</th>
+                @if (allowVendorFilter)
+                {
+                    <th>Vendor</th>
+                }
                 <th>Contact</th>
                 <th>Email</th>
+                <th>Bank Account</th>
+                <th>Notes</th>
                 <th>City</th>
                 <th>Country</th>
                 <th>GST Code</th>
@@ -33,8 +58,14 @@
             <tr>
                 <td>@item.CardId</td>
                 <td>@item.Name</td>
+                @if (allowVendorFilter)
+                {
+                    <td>@item.Vendor?.Name</td>
+                }
                 <td>@item.Contact</td>
                 <td>@item.Email</td>
+                <td>@item.BankAccount</td>
+                <td>@item.Notes</td>
                 <td>@item.City</td>
                 <td>@item.Country</td>
                 <td>@item.GSTCode</td>

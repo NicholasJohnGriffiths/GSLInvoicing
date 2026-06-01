@@ -1,0 +1,1272 @@
+2026-05-20T01:54:53  Fetching changes.
+2026-05-20T01:54:53    Starting  LocalZipHandler
+2026-05-20T01:54:53    Cleaning up temp folders from previous zip deployments and extracting pushed zip file /tmp/zipdeploy/eed2518b-8877-4ca6-92c7-ca03159249b6.zip (36.90 MB) to /tmp/zipdeploy/extracted
+2026-05-20T01:54:59  Updating submodules.
+2026-05-20T01:54:59  Preparing deployment for commit id 'a8322158-2'.
+2026-05-20T01:54:59  PreDeployment: context.CleanOutputPath False
+2026-05-20T01:55:00  PreDeployment: context.OutputPath /home/site/wwwroot
+2026-05-20T01:55:00  Running build. Project type: OneDeploy
+2026-05-20T01:55:00  Copying the manifest
+2026-05-20T01:55:00  Clean deploying to /home/site/wwwroot
+2026-05-20T01:55:00  Generating deployment script.
+2026-05-20T01:55:00  Running deployment command...
+2026-05-20T01:55:00    Command: /opt/Kudu/Scripts/parallel_rsync.sh /tmp/zipdeploy/extracted /home/site/wwwroot 8 /tmp/ True False  
+2026-05-20T01:55:01    Run rsync from: /tmp/zipdeploy/extracted/ to: /home/site/wwwroot/ in 8 parallel threads
+2026-05-20T01:55:01    Delete options: clean=True, use manifest=False, directory to ignore=
+2026-05-20T01:55:01    Prev manifest = /tmp/tmpsEZZ4E.tmp and next /tmp/tmpsEZZ4E.tmp
+2026-05-20T01:55:01    Cleaning up /tmp//filelist.txt and /tmp//splits
+2026-05-20T01:55:01    Creating a list of all files at /tmp//filelist.txt
+2026-05-20T01:55:01    No directory to exclude.
+2026-05-20T01:55:01    Created /tmp//filelist.txt. Total number of files to be synced = 274.
+2026-05-20T01:55:02    Created batches from the list of files. Processing 35 files in each thread
+2026-05-20T01:55:02    Running rsync for filelist /tmp//splits/split.ab from /tmp/zipdeploy/extracted/ to /home/site/wwwroot/
+2026-05-20T01:55:02    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Thin.ttf": Invalid argument (22)
+2026-05-20T01:55:02    Running rsync for filelist /tmp//splits/split.af from /tmp/zipdeploy/extracted/ to /home/site/wwwroot/
+2026-05-20T01:55:02    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ThinItalic.ttf": Invalid argument (22)
+2026-05-20T01:55:02    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll": Invalid argument (22)
+2026-05-20T01:55:02    Running rsync for filelist /tmp//splits/split.ae from /tmp/zipdeploy/extracted/ to /home/site/wwwroot/
+2026-05-20T01:55:02    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\js\site.js": Invalid argument (22)
+2026-05-20T01:55:03    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\js\site.js.br": Invalid argument (22)
+2026-05-20T01:55:03    Running rsync for filelist /tmp//splits/split.aa from /tmp/zipdeploy/extracted/ to /home/site/wwwroot/
+2026-05-20T01:55:03    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.gz": Invalid argument (22)
+2026-05-20T01:55:03    Running rsync for filelist /tmp//splits/split.ag from /tmp/zipdeploy/extracted/ to /home/site/wwwroot/
+2026-05-20T01:55:03    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css": Invalid argument (22)
+2026-05-20T01:55:03    Running rsync for filelist /tmp//splits/split.ad from /tmp/zipdeploy/extracted/ to /home/site/wwwroot/
+2026-05-20T01:55:03    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map": Invalid argument (22)
+2026-05-20T01:55:03    Running rsync for filelist /tmp//splits/split.ah from /tmp/zipdeploy/extracted/ to /home/site/wwwroot/
+2026-05-20T01:55:03    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.gz": Invalid argument (22)
+2026-05-20T01:55:03    
+2026-05-20T01:55:04    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.br": Invalid argument (22)
+2026-05-20T01:55:04    Number of files: 29 (reg: 29)
+2026-05-20T01:55:04    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.gz": Invalid argument (22)
+2026-05-20T01:55:04    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map": Invalid argument (22)
+2026-05-20T01:55:04    Number of regular files transferred: 0
+2026-05-20T01:55:04    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map.br": Invalid argument (22)
+2026-05-20T01:55:04    Total file size: 2.60M bytes
+2026-05-20T01:55:04    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css": Invalid argument (22)
+2026-05-20T01:55:04    Total transferred file size: 0 bytes
+2026-05-20T01:55:04    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map.br": Invalid argument (22)
+2026-05-20T01:55:04    Literal data: 0 bytes
+2026-05-20T01:55:05    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.gz": Invalid argument (22)
+2026-05-20T01:55:05    Matched data: 0 bytes
+2026-05-20T01:55:05    File list size: 0
+2026-05-20T01:55:05    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.gz": Invalid argument (22)
+2026-05-20T01:55:05    File list generation time: 0.071 seconds
+ to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.br": Invalid argument (22)
+2026-05-20T01:55:06    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.gz": Invalid argument (22)
+2026-05-20T01:55:06    File list transfer time: 0.000 seconds
+2026-05-20T01:55:06    Total bytes sent: 1.31K
+2026-05-20T01:55:06    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map": Invalid argument (22)
+2026-05-20T01:55:06    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt": Invalid argument (22)
+2026-05-20T01:55:06    Total bytes received: 15
+2026-05-20T01:55:06    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js": Invalid argument (22)
+2026-05-20T01:55:06    
+2026-05-20T01:55:07    sent 1.31K bytes  received 15 bytes  883.33 bytes/sec
+2026-05-20T01:55:07    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.min.js.br": Invalid argument (22)
+2026-05-20T01:55:07    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.js.gz": Invalid argument (22)
+2026-05-20T01:55:07    total size is 2.60M  speedup is 1,959.21
+2026-05-20T01:55:07    Attempt 1: Rsync for filelist /tmp//splits/split.ah completed with exit code 23
+b\jquery-validation\dist\jquery.validate.min.js.gz": Invalid argument (22)
+2026-05-20T01:55:07    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\LICENSE.txt": Invalid argument (22)
+2026-05-20T01:55:07    
+2026-05-20T01:55:07    Number of files: 35 (reg: 35)
+tor: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.map": Invalid argument (22)
+2026-05-20T01:55:07    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.map.br": Invalid argument (22)
+2026-05-20T01:55:07    Number of created files: 0
+2026-05-20T01:55:07    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-LightItalic.ttf": Invalid argument (22)
+2026-05-20T01:55:07    Number of deleted files: 0
+2026-05-20T01:55:07    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-MediumItalic.ttf": Invalid argument (22)
+2026-05-20T01:55:08    Number of regular files transferred: 0
+2026-05-20T01:55:08    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Black.ttf": Invalid argument (22)
+2026-05-20T01:55:08    Total file size: 10.26M bytes
+2026-05-20T01:55:08    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-BlackItalic.ttf": Invalid argument (22)
+2026-05-20T01:55:08    Total transferred file size: 0 bytes
+2026-05-20T01:55:08    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Bold.ttf": Invalid argument (22)
+2026-05-20T01:55:08    Literal data: 0 bytes
+2026-05-20T01:55:08    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-BoldItalic.ttf": Invalid argument (22)
+2026-05-20T01:55:08    Matched data: 0 bytes
+2026-05-20T01:55:08    rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+2026-05-20T01:55:08    File list size: 0
+2026-05-20T01:55:08    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ExtraBold.ttf": Invalid argument (22)
+2026-05-20T01:55:08    File list generation time: 0.251 seconds
+2026-05-20T01:55:08    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ExtraLight.ttf": Invalid argument (22)
+2026-05-20T01:55:08    File list transfer time: 0.000 seconds
+2026-05-20T01:55:08    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Italic.ttf": Invalid argument (22)
+2026-05-20T01:55:08    Total bytes sent: 1.79K
+2026-05-20T01:55:08    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-SemiBoldItalic.ttf": Invalid argument (22)
+2026-05-20T01:55:08    Total bytes received: 31
+2026-05-20T01:55:08    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll": Invalid argument (22)
+2026-05-20T01:55:09    
+2026-05-20T01:55:09    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll": Invalid argument (22)
+2026-05-20T01:55:09    sent 1.79K bytes  received 31 bytes  1.21K bytes/sec
+2026-05-20T01:55:09    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-x86\native\QuestPdfSkia.dll": Invalid argument (22)
+2026-05-20T01:55:09    total size is 10.26M  speedup is 5,632.22
+2026-05-20T01:55:09    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll": Invalid argument (22)
+2026-05-20T01:55:09    
+2026-05-20T01:55:09    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\css\site.css.br": Invalid argument (22)
+2026-05-20T01:55:09    Number of files: 35 (reg: 35)
+2026-05-20T01:55:09    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.gz": Invalid argument (22)
+2026-05-20T01:55:09    Number of created files: 0
+2026-05-20T01:55:09    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:09    Number of deleted files: 0
+2026-05-20T01:55:09    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.gz": Invalid argument (22)
+2026-05-20T01:55:09    Number of regular files transferred: 0
+2026-05-20T01:55:09    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map.br": Invalid argument (22)
+2026-05-20T01:55:09    Total file size: 6.74M bytes
+2026-05-20T01:55:09    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map.br": Invalid argument (22)
+2026-05-20T01:55:09    Total transferred file size: 0 bytes
+2026-05-20T01:55:09    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map.br": Invalid argument (22)
+2026-05-20T01:55:09    Literal data: 0 bytes
+2026-05-20T01:55:09    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:09    Matched data: 0 bytes
+2026-05-20T01:55:09    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map.br": Invalid argument (22)
+2026-05-20T01:55:09    File list size: 0
+2026-05-20T01:55:09    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.map.br": Invalid argument (22)
+2026-05-20T01:55:09    File list generation time: 0.190 seconds
+2026-05-20T01:55:09    File list transfer time: 0.000 seconds
+2026-05-20T01:55:09    Total bytes sent: 1.74K
+2026-05-20T01:55:09    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css": Invalid argument (22)
+2026-05-20T01:55:09    Total bytes received: 25
+2026-05-20T01:55:09    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map": Invalid argument (22)
+2026-05-20T01:55:09    
+2026-05-20T01:55:09    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js": Invalid argument (22)
+2026-05-20T01:55:09    sent 1.74K bytes  received 25 bytes  1.18K bytes/sec
+2026-05-20T01:55:09    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.br": Invalid argument (22)
+2026-05-20T01:55:09    total size is 6.74M  speedup is 3,812.05
+2026-05-20T01:55:09    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.gz": Invalid argument (22)
+2026-05-20T01:55:09    
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map.br": Invalid argument (22)
+2026-05-20T01:55:10    Number of files: 35 (reg: 35)
+2026-05-20T01:55:10    Number of created files: 0
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map.br": Invalid argument (22)
+2026-05-20T01:55:10    Number of deleted files: 0
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map": Invalid argument (22)
+2026-05-20T01:55:10    Number of regular files transferred: 0
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt.br": Invalid argument (22)
+2026-05-20T01:55:10    Total file size: 16.82M bytes
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js.br": Invalid argument (22)
+2026-05-20T01:55:10    Total transferred file size: 0 bytes
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.js.gz": Invalid argument (22)
+2026-05-20T01:55:10    Literal data: 0 bytes
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.js.br": Invalid argument (22)
+2026-05-20T01:55:10    Matched data: 0 bytes
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.js.br": Invalid argument (22)
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.map": Invalid argument (22)
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-x64\native\QuestPdfSkia.dll": Invalid argument (22)
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll": Invalid argument (22)
+2026-05-20T01:55:10    File list size: 0
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\GSLInvoicing.Web.styles.css.br": Invalid argument (22)
+2026-05-20T01:55:10    File list generation time: 0.362 seconds
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\css\site.css.gz": Invalid argument (22)
+2026-05-20T01:55:10    File list transfer time: 0.000 seconds
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\js\site.js.gz": Invalid argument (22)
+2026-05-20T01:55:10    Total bytes sent: 1.62K
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map.br": Invalid argument (22)
+2026-05-20T01:55:10    Total bytes received: 37
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:10    
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.br": Invalid argument (22)
+2026-05-20T01:55:10    sent 1.62K bytes  received 37 bytes  1.11K bytes/sec
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.gz": Invalid argument (22)
+2026-05-20T01:55:10    total size is 16.82M  speedup is 10,124.09
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map": Invalid argument (22)
+2026-05-20T01:55:10    
+2026-05-20T01:55:10    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map": Invalid argument (22)
+2026-05-20T01:55:10    Number of files: 35 (reg: 35)
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css": Invalid argument (22)
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:11    Number of created files: 0
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css": Invalid argument (22)
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map": Invalid argument (22)
+2026-05-20T01:55:11    Number of regular files transferred: 0
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:11    Total file size: 14.51M bytes
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map": Invalid argument (22)
+2026-05-20T01:55:11    Total transferred file size: 0 bytes
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.gz": Invalid argument (22)
+2026-05-20T01:55:11    Literal data: 0 bytes
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map": Invalid argument (22)
+2026-05-20T01:55:11    Matched data: 0 bytes
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.br": Invalid argument (22)
+2026-05-20T01:55:11    File list size: 0
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map.br": Invalid argument (22)
+2026-05-20T01:55:11    File list generation time: 0.413 seconds
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map.gz": Invalid argument (22)
+2026-05-20T01:55:11    File list transfer time: 0.000 seconds
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js": Invalid argument (22)
+2026-05-20T01:55:11    Total bytes sent: 1.70K
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js": Invalid argument (22)
+2026-05-20T01:55:11    Total bytes received: 28
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/TransactionTemplates\ANZ Bank Trans Template 160402026.json": Invalid argument (22)
+2026-05-20T01:55:11    
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\unix\lib\net6.0\System.Drawing.Common.dll": Invalid argument (22)
+2026-05-20T01:55:11    sent 1.70K bytes  received 28 bytes  1.15K bytes/sec
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll": Invalid argument (22)
+2026-05-20T01:55:11    total size is 14.51M  speedup is 8,404.36
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll": Invalid argument (22)
+2026-05-20T01:55:11    Attempt 1: Rsync for filelist /tmp//splits/split.aa completed with exit code 23
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\GSLInvoicing.Web.styles.css.gz": Invalid argument (22)
+2026-05-20T01:55:11    
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\css\site.css": Invalid argument (22)
+2026-05-20T01:55:11    Number of files: 35 (reg: 35)
+2026-05-20T01:55:11    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.gz": Invalid argument (22)
+2026-05-20T01:55:12    Number of created files: 0
+2026-05-20T01:55:12    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:12    Number of deleted files: 0
+2026-05-20T01:55:12    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map": Invalid argument (22)
+2026-05-20T01:55:12    Number of regular files transferred: 0
+2026-05-20T01:55:12    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:12    Total file size: 13.83M bytes
+2026-05-20T01:55:12    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css": Invalid argument (22)
+2026-05-20T01:55:12    Total transferred file size: 0 bytes
+2026-05-20T01:55:12    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:12    Literal data: 0 bytes
+2026-05-20T01:55:12    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.gz": Invalid argument (22)
+2026-05-20T01:55:12    Matched data: 0 bytes
+2026-05-20T01:55:12    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.br": Invalid argument (22)
+2026-05-20T01:55:12    File list size: 0
+2026-05-20T01:55:12    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map": Invalid argument (22)
+2026-05-20T01:55:12    File list generation time: 0.192 seconds
+2026-05-20T01:55:12    File list transfer time: 0.000 seconds
+ed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js": Invalid argument (22)
+2026-05-20T01:55:12    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map": Invalid argument (22)
+2026-05-20T01:55:12    Total bytes sent: 1.68K
+2026-05-20T01:55:12    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js": Invalid argument (22)
+2026-05-20T01:55:12    Total bytes received: 40
+2026-05-20T01:55:12    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.map": Invalid argument (22)
+2026-05-20T01:55:12    
+2026-05-20T01:55:13    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.map.gz": Invalid argument (22)
+2026-05-20T01:55:13    sent 1.68K bytes  received 40 bytes  1.15K bytes/sec
+2026-05-20T01:55:13    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js": Invalid argument (22)
+2026-05-20T01:55:13    total size is 13.83M  speedup is 8,042.05
+2026-05-20T01:55:13    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.gz": Invalid argument (22)
+2026-05-20T01:55:13    Attempt 1: Rsync for filelist /tmp//splits/split.ad completed with exit code 23
+2026-05-20T01:55:13    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js.br": Invalid argument (22)
+2026-05-20T01:55:13    
+2026-05-20T01:55:13    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\LICENSE.md.br": Invalid argument (22)
+2026-05-20T01:55:13    Number of files: 35 (reg: 35)
+2026-05-20T01:55:13    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.min.js.gz": Invalid argument (22)
+2026-05-20T01:55:13    Number of created files: 0
+2026-05-20T01:55:13    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\LICENSE.txt.br": Invalid argument (22)
+2026-05-20T01:55:13    Number of deleted files: 0
+2026-05-20T01:55:13    Number of regular files transferred: 0
+ed to stat "/home/site/wwwroot/wwwroot\lib\jquery\LICENSE.txt.gz": Invalid argument (22)
+2026-05-20T01:55:13    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.js": Invalid argument (22)
+2026-05-20T01:55:13    Total file size: 16.30M bytes
+2026-05-20T01:55:13    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.js": Invalid argument (22)
+2026-05-20T01:55:13    Total transferred file size: 0 bytes
+2026-05-20T01:55:13    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.js.gz": Invalid argument (22)
+2026-05-20T01:55:13    Literal data: 0 bytes
+2026-05-20T01:55:13    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ExtraBoldItalic.ttf": Invalid argument (22)
+2026-05-20T01:55:13    Matched data: 0 bytes
+2026-05-20T01:55:13    File list size: 0
+ recv_generator: failed to stat "/home/site/wwwroot/LatoFont\OFL.txt": Invalid argument (22)
+2026-05-20T01:55:13    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ExtraLightItalic.ttf": Invalid argument (22)
+2026-05-20T01:55:14    File list generation time: 0.181 seconds
+2026-05-20T01:55:14    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Light.ttf": Invalid argument (22)
+2026-05-20T01:55:14    File list transfer time: 0.000 seconds
+2026-05-20T01:55:14    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\osx-arm64\native\libQuestPdfSkia.dylib": Invalid argument (22)
+2026-05-20T01:55:14    Total bytes sent: 1.65K
+2026-05-20T01:55:14    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\osx-x64\native\libQuestPdfSkia.dylib": Invalid argument (22)
+2026-05-20T01:55:14    Total bytes received: 37
+2026-05-20T01:55:14    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\System.Drawing.Common.dll": Invalid argument (22)
+2026-05-20T01:55:14    
+2026-05-20T01:55:14    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\favicon.ico": Invalid argument (22)
+2026-05-20T01:55:14    sent 1.65K bytes  received 37 bytes  1.13K bytes/sec
+2026-05-20T01:55:14    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\LICENSE": Invalid argument (22)
+2026-05-20T01:55:14    total size is 16.30M  speedup is 9,652.84
+2026-05-20T01:55:14    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.br": Invalid argument (22)
+2026-05-20T01:55:14    Attempt 1: Rsync for filelist /tmp//splits/split.ae completed with exit code 23
+2026-05-20T01:55:14    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map.br": Invalid argument (22)
+2026-05-20T01:55:14    Attempt 1: Rsync for filelist /tmp//splits/split.ag completed with exit code 23
+2026-05-20T01:55:14    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.br": Invalid argument (22)
+2026-05-20T01:55:14    Attempt 1: Rsync for filelist /tmp//splits/split.ac completed with exit code 23
+2026-05-20T01:55:14    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map.br": Invalid argument (22)
+2026-05-20T01:55:14    Attempt 1: Rsync for filelist /tmp//splits/split.ab completed with exit code 23
+2026-05-20T01:55:14    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.br": Invalid argument (22)
+2026-05-20T01:55:14    
+2026-05-20T01:55:14    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map.br": Invalid argument (22)
+2026-05-20T01:55:14    Number of files: 35 (reg: 35)
+2026-05-20T01:55:14    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.br": Invalid argument (22)
+2026-05-20T01:55:15    Number of created files: 0
+2026-05-20T01:55:15    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.br": Invalid argument (22)
+2026-05-20T01:55:15    Number of deleted files: 0
+2026-05-20T01:55:15    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map.br": Invalid argument (22)
+2026-05-20T01:55:15    Number of regular files transferred: 0
+ed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css": Invalid argument (22)
+2026-05-20T01:55:15    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.br": Invalid argument (22)
+2026-05-20T01:55:15    Total file size: 12.97M bytes
+2026-05-20T01:55:15    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.br": Invalid argument (22)
+2026-05-20T01:55:15    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css": Invalid argument (22)
+2026-05-20T01:55:15    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map.gz": Invalid argument (22)
+2026-05-20T01:55:15    File list size: 0
+2026-05-20T01:55:15    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt.gz": Invalid argument (22)
+2026-05-20T01:55:15    File list generation time: 0.353 seconds
+2026-05-20T01:55:15    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js.gz": Invalid argument (22)
+2026-05-20T01:55:15    File list transfer time: 0.000 seconds
+2026-05-20T01:55:15    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\LICENSE.md": Invalid argument (22)
+2026-05-20T01:55:15    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.js.br": Invalid argument (22)
+2026-05-20T01:55:16    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.min.js.br": Invalid argument (22)
+2026-05-20T01:55:16    Total bytes received: 46
+2026-05-20T01:55:16    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.js.br": Invalid argument (22)
+2026-05-20T01:55:16    
+2026-05-20T01:55:16    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.js": Invalid argument (22)
+2026-05-20T01:55:16    sent 1.73K bytes  received 46 bytes  1.18K bytes/sec
+2026-05-20T01:55:16    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.map.gz": Invalid argument (22)
+2026-05-20T01:55:16    total size is 12.97M  speedup is 7,309.73
+2026-05-20T01:55:16    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll": Invalid argument (22)
+2026-05-20T01:55:16    Attempt 1: Rsync for filelist /tmp//splits/split.af completed with exit code 23
+2026-05-20T01:55:16    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\favicon.ico.br": Invalid argument (22)
+2026-05-20T01:55:16    
+2026-05-20T01:55:16    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\favicon.ico.gz": Invalid argument (22)
+2026-05-20T01:55:16    Number of files: 29 (reg: 29)
+2026-05-20T01:55:16    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:16    Number of created files: 0
+2026-05-20T01:55:16    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.br": Invalid argument (22)
+2026-05-20T01:55:16    Number of deleted files: 0
+2026-05-20T01:55:16    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map.br": Invalid argument (22)
+2026-05-20T01:55:16    Number of regular files transferred: 0
+2026-05-20T01:55:16    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css": Invalid argument (22)
+2026-05-20T01:55:16    Total file size: 2.60M bytes
+2026-05-20T01:55:17    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:17    Total transferred file size: 0 bytes
+2026-05-20T01:55:17    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.gz": Invalid argument (22)
+2026-05-20T01:55:17    Literal data: 0 bytes
+2026-05-20T01:55:17    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.gz": Invalid argument (22)
+2026-05-20T01:55:17    Matched data: 0 bytes
+2026-05-20T01:55:17    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.map": Invalid argument (22)
+2026-05-20T01:55:17    File list size: 0
+2026-05-20T01:55:17    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map": Invalid argument (22)
+2026-05-20T01:55:17    File list generation time: 0.222 seconds
+2026-05-20T01:55:17    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map.br": Invalid argument (22)
+2026-05-20T01:55:17    File list transfer time: 0.000 seconds
+2026-05-20T01:55:17    Total bytes sent: 1.31K
+generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map.br": Invalid argument (22)
+2026-05-20T01:55:17    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map": Invalid argument (22)
+2026-05-20T01:55:17    Total bytes received: 15
+2026-05-20T01:55:17    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map.gz": Invalid argument (22)
+2026-05-20T01:55:17    
+2026-05-20T01:55:18    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js": Invalid argument (22)
+2026-05-20T01:55:18    sent 1.31K bytes  received 15 bytes  883.33 bytes/sec
+2026-05-20T01:55:18    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.br": Invalid argument (22)
+2026-05-20T01:55:18    total size is 2.60M  speedup is 1,959.21
+2026-05-20T01:55:18    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.gz": Invalid argument (22)
+2026-05-20T01:55:18    Attempt 2: Rsync for filelist /tmp//splits/split.ah completed with exit code 23
+2026-05-20T01:55:18    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map.br": Invalid argument (22)
+2026-05-20T01:55:18    
+2026-05-20T01:55:18    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.br": Invalid argument (22)
+2026-05-20T01:55:18    Number of files: 35 (reg: 35)
+2026-05-20T01:55:18    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.map.br": Invalid argument (22)
+2026-05-20T01:55:18    Number of created files: 0
+2026-05-20T01:55:18    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.js": Invalid argument (22)
+2026-05-20T01:55:18    Number of deleted files: 0
+2026-05-20T01:55:18    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.min.js": Invalid argument (22)
+2026-05-20T01:55:18    Number of regular files transferred: 0
+2026-05-20T01:55:18    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.js.gz": Invalid argument (22)
+2026-05-20T01:55:18    Total file size: 6.74M bytes
+2026-05-20T01:55:18    Total transferred file size: 0 bytes
+iled to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.js.gz": Invalid argument (22)
+2026-05-20T01:55:18    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.js": Invalid argument (22)
+2026-05-20T01:55:18    Literal data: 0 bytes
+2026-05-20T01:55:18    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Medium.ttf": Invalid argument (22)
+2026-05-20T01:55:18    Matched data: 0 bytes
+2026-05-20T01:55:18    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Regular.ttf": Invalid argument (22)
+2026-05-20T01:55:18    File list size: 0
+2026-05-20T01:55:18    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-SemiBold.ttf": Invalid argument (22)
+2026-05-20T01:55:18    File list generation time: 0.060 seconds
+2026-05-20T01:55:18    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\linux-arm64\native\libQuestPdfSkia.so": Invalid argument (22)
+2026-05-20T01:55:18    File list transfer time: 0.000 seconds
+2026-05-20T01:55:18    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\linux-x64\native\libQuestPdfSkia.so": Invalid argument (22)
+2026-05-20T01:55:18    Total bytes sent: 1.74K
+2026-05-20T01:55:19    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\GSLInvoicing.Web.styles.css": Invalid argument (22)
+2026-05-20T01:55:19    Total bytes received: 25
+2026-05-20T01:55:19    
+2026-05-20T01:55:19    sent 1.74K bytes  received 25 bytes  3.54K bytes/sec
+ome/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css": Invalid argument (22)
+2026-05-20T01:55:19    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.br": Invalid argument (22)
+2026-05-20T01:55:19    total size is 6.74M  speedup is 3,812.05
+2026-05-20T01:55:19    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map.br": Invalid argument (22)
+2026-05-20T01:55:19    Attempt 2: Rsync for filelist /tmp//splits/split.ac completed with exit code 23
+2026-05-20T01:55:19    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css": Invalid argument (22)
+2026-05-20T01:55:19    
+2026-05-20T01:55:19    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map": Invalid argument (22)
+2026-05-20T01:55:19    Number of files: 35 (reg: 35)
+2026-05-20T01:55:19    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:19    Number of created files: 0
+2026-05-20T01:55:19    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css": Invalid argument (22)
+2026-05-20T01:55:19    Number of deleted files: 0
+2026-05-20T01:55:19    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.br": Invalid argument (22)
+2026-05-20T01:55:19    Number of regular files transferred: 0
+2026-05-20T01:55:19    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css": Invalid argument (22)
+2026-05-20T01:55:19    Total file size: 10.26M bytes
+2026-05-20T01:55:19    Total transferred file size: 0 bytes
+iled to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.br": Invalid argument (22)
+2026-05-20T01:55:19    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:19    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:19    Matched data: 0 bytes
+2026-05-20T01:55:19    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.br": Invalid argument (22)
+2026-05-20T01:55:19    File list size: 0
+2026-05-20T01:55:19    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:19    File list generation time: 0.562 seconds
+2026-05-20T01:55:19    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css": Invalid argument (22)
+2026-05-20T01:55:19    File list transfer time: 0.000 seconds
+2026-05-20T01:55:19    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:19    Total bytes sent: 1.79K
+2026-05-20T01:55:19    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:20    Total bytes received: 31
+2026-05-20T01:55:20    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.gz": Invalid argument (22)
+2026-05-20T01:55:20    sent 1.79K bytes  received 31 bytes  1.21K bytes/sec
+2026-05-20T01:55:20    total size is 10.26M  speedup is 5,632.22
+2026-05-20T01:55:20    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.br": Invalid argument (22)
+2026-05-20T01:55:20    
+2026-05-20T01:55:20    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map.br": Invalid argument (22)
+2026-05-20T01:55:20    Number of files: 35 (reg: 35)
+2026-05-20T01:55:20    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.js.br": Invalid argument (22)
+2026-05-20T01:55:20    Number of created files: 0
+2026-05-20T01:55:20    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.min.js": Invalid argument (22)
+2026-05-20T01:55:20    Number of deleted files: 0
+2026-05-20T01:55:20    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.map.br": Invalid argument (22)
+2026-05-20T01:55:20    Number of regular files transferred: 0
+2026-05-20T01:55:20    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\linux-musl-x64\native\libQuestPdfSkia.so": Invalid argument (22)
+2026-05-20T01:55:20    Total file size: 16.82M bytes
+2026-05-20T01:55:20    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\System.Runtime.Caching.dll": Invalid argument (22)
+2026-05-20T01:55:20    Total transferred file size: 0 bytes
+2026-05-20T01:55:20    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\System.Windows.Extensions.dll": Invalid argument (22)
+2026-05-20T01:55:20    Literal data: 0 bytes
+2026-05-20T01:55:20    rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+2026-05-20T01:55:20    Matched data: 0 bytes
+2026-05-20T01:55:20    rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+2026-05-20T01:55:20    File list size: 0
+2026-05-20T01:55:20    rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+2026-05-20T01:55:20    File list generation time: 0.171 seconds
+2026-05-20T01:55:20    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map": Invalid argument (22)
+2026-05-20T01:55:21    File list transfer time: 0.000 seconds
+2026-05-20T01:55:21    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css": Invalid argument (22)
+2026-05-20T01:55:21    Total bytes sent: 1.62K
+2026-05-20T01:55:21    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css": Invalid argument (22)
+2026-05-20T01:55:21    Total bytes received: 37
+2026-05-20T01:55:21    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map": Invalid argument (22)
+2026-05-20T01:55:21    
+2026-05-20T01:55:21    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.gz": Invalid argument (22)
+2026-05-20T01:55:21    sent 1.62K bytes  received 37 bytes  3.32K bytes/sec
+2026-05-20T01:55:21    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map": Invalid argument (22)
+2026-05-20T01:55:21    total size is 16.82M  speedup is 10,124.09
+2026-05-20T01:55:21    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.gz": Invalid argument (22)
+2026-05-20T01:55:21    
+2026-05-20T01:55:21    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map": Invalid argument (22)
+2026-05-20T01:55:21    Number of files: 35 (reg: 35)
+2026-05-20T01:55:21    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.gz": Invalid argument (22)
+2026-05-20T01:55:21    Number of created files: 0
+2026-05-20T01:55:21    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.br": Invalid argument (22)
+2026-05-20T01:55:21    Number of deleted files: 0
+2026-05-20T01:55:21    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map.gz": Invalid argument (22)
+2026-05-20T01:55:21    Number of regular files transferred: 0
+2026-05-20T01:55:21    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.gz": Invalid argument (22)
+2026-05-20T01:55:21    Total file size: 14.51M bytes
+2026-05-20T01:55:21    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map.gz": Invalid argument (22)
+2026-05-20T01:55:21    Total transferred file size: 0 bytes
+2026-05-20T01:55:21    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js.gz": Invalid argument (22)
+2026-05-20T01:55:21    Literal data: 0 bytes
+2026-05-20T01:55:21    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\LICENSE.md.gz": Invalid argument (22)
+2026-05-20T01:55:21    Matched data: 0 bytes
+2026-05-20T01:55:21    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.js": Invalid argument (22)
+2026-05-20T01:55:21    File list size: 0
+2026-05-20T01:55:21    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.js.br": Invalid argument (22)
+2026-05-20T01:55:21    File list generation time: 0.583 seconds
+2026-05-20T01:55:21    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.js.gz": Invalid argument (22)
+2026-05-20T01:55:22    File list transfer time: 0.000 seconds
+2026-05-20T01:55:22    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.map.gz": Invalid argument (22)
+2026-05-20T01:55:22    Total bytes sent: 1.70K
+2026-05-20T01:55:22    Total bytes received: 28
+2026-05-20T01:55:22    rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+2026-05-20T01:55:22    
+2026-05-20T01:55:22    sent 1.70K bytes  received 28 bytes  1.15K bytes/sec
+2026-05-20T01:55:22    rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+2026-05-20T01:55:22    total size is 14.51M  speedup is 8,404.36
+2026-05-20T01:55:22    rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+2026-05-20T01:55:22    
+2026-05-20T01:55:22    rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+2026-05-20T01:55:22    Number of files: 35 (reg: 35)
+2026-05-20T01:55:22    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Thin.ttf": Invalid argument (22)
+2026-05-20T01:55:22    Number of created files: 0
+2026-05-20T01:55:22    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ThinItalic.ttf": Invalid argument (22)
+2026-05-20T01:55:22    Number of deleted files: 0
+2026-05-20T01:55:22    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll": Invalid argument (22)
+2026-05-20T01:55:22    Number of regular files transferred: 0
+2026-05-20T01:55:22    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\js\site.js": Invalid argument (22)
+2026-05-20T01:55:22    Total file size: 13.83M bytes
+2026-05-20T01:55:22    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\js\site.js.br": Invalid argument (22)
+2026-05-20T01:55:22    Total transferred file size: 0 bytes
+2026-05-20T01:55:22    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.gz": Invalid argument (22)
+2026-05-20T01:55:22    Literal data: 0 bytes
+2026-05-20T01:55:22    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css": Invalid argument (22)
+2026-05-20T01:55:22    Matched data: 0 bytes
+2026-05-20T01:55:22    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map": Invalid argument (22)
+2026-05-20T01:55:22    File list size: 0
+2026-05-20T01:55:22    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.gz": Invalid argument (22)
+2026-05-20T01:55:22    File list generation time: 0.102 seconds
+2026-05-20T01:55:22    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.br": Invalid argument (22)
+2026-05-20T01:55:22    File list transfer time: 0.000 seconds
+2026-05-20T01:55:22    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.gz": Invalid argument (22)
+2026-05-20T01:55:22    Total bytes sent: 1.68K
+2026-05-20T01:55:22    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map": Invalid argument (22)
+2026-05-20T01:55:23    Total bytes received: 40
+2026-05-20T01:55:23    
+2026-05-20T01:55:23    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map.br": Invalid argument (22)
+2026-05-20T01:55:23    sent 1.68K bytes  received 40 bytes  3.44K bytes/sec
+2026-05-20T01:55:23    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css": Invalid argument (22)
+2026-05-20T01:55:23    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map.br": Invalid argument (22)
+2026-05-20T01:55:23    total size is 13.83M  speedup is 8,042.05
+2026-05-20T01:55:23    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.gz": Invalid argument (22)
+2026-05-20T01:55:23    
+2026-05-20T01:55:23    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.gz": Invalid argument (22)
+2026-05-20T01:55:23    Number of files: 35 (reg: 35)
+2026-05-20T01:55:23    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.br": Invalid argument (22)
+2026-05-20T01:55:23    Number of created files: 0
+2026-05-20T01:55:23    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.gz": Invalid argument (22)
+2026-05-20T01:55:23    Number of deleted files: 0
+2026-05-20T01:55:23    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map": Invalid argument (22)
+2026-05-20T01:55:23    Number of regular files transferred: 0
+2026-05-20T01:55:23    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt": Invalid argument (22)
+2026-05-20T01:55:23    Total file size: 12.97M bytes
+2026-05-20T01:55:23    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js": Invalid argument (22)
+2026-05-20T01:55:23    Total transferred file size: 0 bytes
+2026-05-20T01:55:23    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.min.js.br": Invalid argument (22)
+2026-05-20T01:55:23    Literal data: 0 bytes
+2026-05-20T01:55:23    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.js.gz": Invalid argument (22)
+2026-05-20T01:55:23    Matched data: 0 bytes
+2026-05-20T01:55:23    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.min.js.gz": Invalid argument (22)
+2026-05-20T01:55:23    File list size: 0
+2026-05-20T01:55:23    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\LICENSE.txt": Invalid argument (22)
+2026-05-20T01:55:23    File list generation time: 0.021 seconds
+2026-05-20T01:55:23    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.map": Invalid argument (22)
+2026-05-20T01:55:23    File list transfer time: 0.000 seconds
+2026-05-20T01:55:23    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.map.br": Invalid argument (22)
+2026-05-20T01:55:23    Total bytes sent: 1.73K
+2026-05-20T01:55:23    rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+2026-05-20T01:55:23    Total bytes received: 46
+2026-05-20T01:55:23    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-LightItalic.ttf": Invalid argument (22)
+2026-05-20T01:55:24    
+sync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-MediumItalic.ttf": Invalid argument (22)
+2026-05-20T01:55:24    sent 1.73K bytes  received 46 bytes  3.55K bytes/sec
+2026-05-20T01:55:24    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Medium.ttf": Invalid argument (22)
+2026-05-20T01:55:24    total size is 12.97M  speedup is 7,309.73
+2026-05-20T01:55:24    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Regular.ttf": Invalid argument (22)
+2026-05-20T01:55:24    Attempt 2: Rsync for filelist /tmp//splits/split.ag completed with exit code 23
+2026-05-20T01:55:24    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-SemiBold.ttf": Invalid argument (22)
+2026-05-20T01:55:24    Attempt 2: Rsync for filelist /tmp//splits/split.af completed with exit code 23
+2026-05-20T01:55:24    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Black.ttf": Invalid argument (22)
+2026-05-20T01:55:24    Attempt 2: Rsync for filelist /tmp//splits/split.ad completed with exit code 23
+2026-05-20T01:55:24    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-BlackItalic.ttf": Invalid argument (22)
+2026-05-20T01:55:24    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Bold.ttf": Invalid argument (22)
+2026-05-20T01:55:24    Number of files: 35 (reg: 35)
+2026-05-20T01:55:24    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-BoldItalic.ttf": Invalid argument (22)
+2026-05-20T01:55:24    Number of created files: 0
+2026-05-20T01:55:24    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Italic.ttf": Invalid argument (22)
+2026-05-20T01:55:24    Number of deleted files: 0
+2026-05-20T01:55:24    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-SemiBoldItalic.ttf": Invalid argument (22)
+2026-05-20T01:55:24    Number of regular files transferred: 0
+2026-05-20T01:55:24    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll": Invalid argument (22)
+2026-05-20T01:55:24    Total file size: 16.30M bytes
+2026-05-20T01:55:24    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll": Invalid argument (22)
+2026-05-20T01:55:24    Total transferred file size: 0 bytes
+2026-05-20T01:55:24    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-x86\native\QuestPdfSkia.dll": Invalid argument (22)
+2026-05-20T01:55:24    Literal data: 0 bytes
+2026-05-20T01:55:24    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll": Invalid argument (22)
+2026-05-20T01:55:24    Matched data: 0 bytes
+2026-05-20T01:55:24    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\css\site.css.br": Invalid argument (22)
+2026-05-20T01:55:24    File list size: 0
+2026-05-20T01:55:24    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.gz": Invalid argument (22)
+2026-05-20T01:55:24    File list generation time: 0.211 seconds
+2026-05-20T01:55:24    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:24    File list transfer time: 0.000 seconds
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.gz": Invalid argument (22)
+2026-05-20T01:55:25    Total bytes sent: 1.65K
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map.br": Invalid argument (22)
+2026-05-20T01:55:25    Total bytes received: 37
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map.br": Invalid argument (22)
+2026-05-20T01:55:25    
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map.br": Invalid argument (22)
+2026-05-20T01:55:25    sent 1.65K bytes  received 37 bytes  160.86 bytes/sec
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:25    total size is 16.30M  speedup is 9,652.84
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map.br": Invalid argument (22)
+2026-05-20T01:55:25    Attempt 2: Rsync for filelist /tmp//splits/split.ae completed with exit code 23
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.map.br": Invalid argument (22)
+2026-05-20T01:55:25    Attempt 2: Rsync for filelist /tmp//splits/split.aa completed with exit code 23
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css": Invalid argument (22)
+2026-05-20T01:55:25    Attempt 2: Rsync for filelist /tmp//splits/split.ab completed with exit code 23
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\linux-musl-x64\native\libQuestPdfSkia.so": Invalid argument (22)
+2026-05-20T01:55:25    An error has occurred during web site deployment.
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ExtraBold.ttf": Invalid argument (22)
+2026-05-20T01:55:25    Rsync failed in 16 seconds
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ExtraLight.ttf": Invalid argument (22)
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ExtraLightItalic.ttf": Invalid argument (22)
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Light.ttf": Invalid argument (22)
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map": Invalid argument (22)
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js": Invalid argument (22)
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.br": Invalid argument (22)
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.gz": Invalid argument (22)
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map.br": Invalid argument (22)
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map.br": Invalid argument (22)
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map": Invalid argument (22)
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt.br": Invalid argument (22)
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js.br": Invalid argument (22)
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.js.gz": Invalid argument (22)
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.js.br": Invalid argument (22)
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.js.br": Invalid argument (22)
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.map": Invalid argument (22)
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/TransactionTemplates\ANZ Bank Trans Template 160402026.json": Invalid argument (22)
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\unix\lib\net6.0\System.Drawing.Common.dll": Invalid argument (22)
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll": Invalid argument (22)
+2026-05-20T01:55:25    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll": Invalid argument (22)
+2026-05-20T01:55:26    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\GSLInvoicing.Web.styles.css.gz": Invalid argument (22)
+2026-05-20T01:55:26    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\css\site.css": Invalid argument (22)
+2026-05-20T01:55:26    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.gz": Invalid argument (22)
+2026-05-20T01:55:26    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:26    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map": Invalid argument (22)
+2026-05-20T01:55:26    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:26    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css": Invalid argument (22)
+2026-05-20T01:55:26    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:26    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.gz": Invalid argument (22)
+2026-05-20T01:55:26    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.br": Invalid argument (22)
+2026-05-20T01:55:26    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map": Invalid argument (22)
+2026-05-20T01:55:26    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js": Invalid argument (22)
+2026-05-20T01:55:26    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map": Invalid argument (22)
+2026-05-20T01:55:26    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js": Invalid argument (22)
+2026-05-20T01:55:26    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.map": Invalid argument (22)
+2026-05-20T01:55:26    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.map.gz": Invalid argument (22)
+2026-05-20T01:55:26    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js": Invalid argument (22)
+2026-05-20T01:55:26    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.gz": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js.br": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\LICENSE.md.br": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.min.js.gz": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\LICENSE.txt.br": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\LICENSE.txt.gz": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.js": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.js": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.js.gz": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\System.Runtime.Caching.dll": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\System.Windows.Extensions.dll": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\osx-arm64\native\libQuestPdfSkia.dylib": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\osx-x64\native\libQuestPdfSkia.dylib": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\System.Drawing.Common.dll": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\favicon.ico": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\LICENSE": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.br": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map.br": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.br": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map.br": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.br": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map.br": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.br": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.br": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map.br": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.br": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.br": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css": Invalid argument (22)
+2026-05-20T01:55:27    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map.gz": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt.gz": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js.gz": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\LICENSE.md": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.js.br": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.min.js.br": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.js.br": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.js": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.map.gz": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.gz": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.gz": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.gz": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.br": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map.gz": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.gz": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map.gz": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js.gz": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\LICENSE.md.gz": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.js": Invalid argument (22)
+2026-05-20T01:55:28    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-x64\native\QuestPdfSkia.dll": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\GSLInvoicing.Web.styles.css.br": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\css\site.css.gz": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\js\site.js.gz": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map.br": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.br": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.gz": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.gz": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.br": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map.br": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map.gz": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js": Invalid argument (22)
+2026-05-20T01:55:29    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ExtraBoldItalic.ttf": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\OFL.txt": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.js.br": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.js.gz": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.map.gz": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\favicon.ico.br": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\favicon.ico.gz": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.br": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map.br": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.gz": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.gz": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.map": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map.br": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map.br": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map.gz": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.br": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.gz": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map.br": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.br": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.map.br": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.js": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.min.js": Invalid argument (22)
+2026-05-20T01:55:30    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.js.gz": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.js.gz": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.js": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\linux-arm64\native\libQuestPdfSkia.so": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\linux-x64\native\libQuestPdfSkia.so": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\GSLInvoicing.Web.styles.css": Invalid argument (22)
+2026-05-20T01:55:31    rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+2026-05-20T01:55:31    rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+2026-05-20T01:55:31    rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+2026-05-20T01:55:31    rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.br": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map.br": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.br": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.br": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.br": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:31    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map.gz": Invalid argument (22)
+2026-05-20T01:55:32    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.gz": Invalid argument (22)
+2026-05-20T01:55:32    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.br": Invalid argument (22)
+2026-05-20T01:55:32    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map.br": Invalid argument (22)
+2026-05-20T01:55:32    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.js.br": Invalid argument (22)
+2026-05-20T01:55:32    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.min.js": Invalid argument (22)
+2026-05-20T01:55:32    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.map.br": Invalid argument (22)
+2026-05-20T01:55:32    rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+2026-05-20T01:55:32    rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+2026-05-20T01:55:32    rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+2026-05-20T01:55:32    rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Thin.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ThinItalic.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\js\site.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\js\site.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.min.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.min.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\LICENSE.txt": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-LightItalic.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-MediumItalic.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Black.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-BlackItalic.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Bold.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-BoldItalic.ttf": Invalid argument (22)
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ExtraBold.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ExtraLight.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Italic.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-SemiBoldItalic.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-x86\native\QuestPdfSkia.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\css\site.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-x64\native\QuestPdfSkia.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\GSLInvoicing.Web.styles.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\css\site.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\js\site.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/TransactionTemplates\ANZ Bank Trans Template 160402026.json": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\unix\lib\net6.0\System.Drawing.Common.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\GSLInvoicing.Web.styles.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\css\site.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\LICENSE.md.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.min.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\LICENSE.txt.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\LICENSE.txt.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ExtraBoldItalic.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\OFL.txt": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ExtraLightItalic.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Light.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\osx-arm64\native\libQuestPdfSkia.dylib": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\osx-x64\native\libQuestPdfSkia.dylib": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\System.Drawing.Common.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\favicon.ico": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\LICENSE": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\LICENSE.md": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.min.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\favicon.ico.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\favicon.ico.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.min.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Medium.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Regular.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-SemiBold.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\linux-arm64\native\libQuestPdfSkia.so": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\linux-x64\native\libQuestPdfSkia.so": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\GSLInvoicing.Web.styles.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.min.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\linux-musl-x64\native\libQuestPdfSkia.so": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\System.Runtime.Caching.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\System.Windows.Extensions.dll": Invalid argument (22)
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\LICENSE.md.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.map.gz": Invalid argument (22)
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Thin.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ThinItalic.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\js\site.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\js\site.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.min.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.min.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\LICENSE.txt": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.map.br": Invalid argument (22)
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-LightItalic.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-MediumItalic.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Medium.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Regular.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-SemiBold.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Black.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-BlackItalic.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Bold.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-BoldItalic.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Italic.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-SemiBoldItalic.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-x86\native\QuestPdfSkia.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\css\site.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\linux-musl-x64\native\libQuestPdfSkia.so": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ExtraBold.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ExtraLight.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ExtraLightItalic.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-Light.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/TransactionTemplates\ANZ Bank Trans Template 160402026.json": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\unix\lib\net6.0\System.Drawing.Common.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\GSLInvoicing.Web.styles.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\css\site.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\LICENSE.md.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.min.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\LICENSE.txt.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\LICENSE.txt.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\System.Runtime.Caching.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\System.Windows.Extensions.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\osx-arm64\native\libQuestPdfSkia.dylib": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\osx-x64\native\libQuestPdfSkia.dylib": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\System.Drawing.Common.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\favicon.ico": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\LICENSE": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\LICENSE.md": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.min.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\LICENSE.md.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-x64\native\QuestPdfSkia.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\GSLInvoicing.Web.styles.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\css\site.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\js\site.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\Lato-ExtraBoldItalic.ttf": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/LatoFont\OFL.txt": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\favicon.ico.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\favicon.ico.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.js.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.min.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.slim.min.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\linux-arm64\native\libQuestPdfSkia.so": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/runtimes\linux-x64\native\libQuestPdfSkia.so": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\GSLInvoicing.Web.styles.css": Invalid argument (22)
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.gz": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\additional-methods.js.br": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery-validation\dist\jquery.validate.min.js": Invalid argument (22)
+rsync: [generator] recv_generator: failed to stat "/home/site/wwwroot/wwwroot\lib\jquery\dist\jquery.min.map.br": Invalid argument (22)
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1338) [sender=3.2.7]
+/opt/Kudu/Scripts/starter.sh /opt/Kudu/Scripts/parallel_rsync.sh /tmp/zipdeploy/extracted /home/site/wwwroot 8 /tmp/ True False  
+2026-05-20T01:55:32  
+2026-05-20T01:55:32    Using cached version of deployment script (command: 'azure -y --no-dot-deployment -r "/tmp/zipdeploy/extracted" -o "/home/site/deployments/tools" --basic --sitePath "/tmp/zipdeploy/extracted"').
+2026-05-20T01:55:32  Running deployment command...
+2026-05-20T01:55:32    Command: "/home/site/deployments/tools/deploy.sh"
+2026-05-20T01:55:32    Handling Basic Web Site deployment.
+2026-05-20T01:55:33    Kudu sync from: '/tmp/zipdeploy/extracted' to: '/home/site/wwwroot'
+2026-05-20T01:55:33    Copying file: 'LatoFont\Lato-Black.ttf'
+2026-05-20T01:55:33    Copying file: 'LatoFont\Lato-BlackItalic.ttf'
+2026-05-20T01:55:33    Error: EINVAL: invalid argument, open '/home/site/wwwroot/LatoFont\Lato-Black.ttf'
+2026-05-20T01:55:33    An error has occurred during web site deployment.
+2026-05-20T01:55:33    Kudu Sync failed
+2026-05-20T01:55:34    
+/opt/Kudu/Scripts/starter.sh "/home/site/deployments/tools/deploy.sh"
+2026-05-20T01:55:34  
+2026-05-20T01:55:34  Deployment Failed. deployer = OneDeploy deploymentPath = OneDeploy

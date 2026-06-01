@@ -1,0 +1,15 @@
+<step title="Incoming Request" date="2026-02-27T02:19:27.577" instance="7d4ee3" url="/api/zipdeploy?isAsync=true" method="POST" type="request" pid="833,1,15" Accept="*/*" Host="gslinvoicing-48285.scm.azurewebsites.net" User-Agent="AZURECLI/2.83.0 (MSI)" Accept-Encoding="gzip, deflate" Authorization="Bea..." Cache-Control="no-cache" Content-Type="application/octet-stream" Content-Length="11277406" x-ms-client-request-id="bb0d2c56-1382-11f1-a7dd-1068382f7146" x-ms-artifact-checksum="a709521ebb83b4e971c6ee8fc1db61dabc3b55c2d7b34fccbe1ddf4b47115f5a" X-ARR-LOG-ID="bb0d2c56-1382-11f1-a7dd-1068382f7146" CLIENT-IP="43.245.241.157:51300" X-SITE-DEPLOYMENT-ID="gslinvoicing-48285" WAS-DEFAULT-HOSTNAME="gslinvoicing-48285.scm.azurewebsites.net" X-Forwarded-Proto="https" X-AppService-Proto="https" X-Forwarded-TlsVersion="1.3" X-WAWS-Unencoded-URL="/api/zipdeploy?isAsync=true" X-Client-IP="43.245.241.157" X-Client-Port="51300" >
+  <step title="Cleanup Xml Logs" date="2026-02-27T02:19:27.615" /><!-- duration: 22ms -->
+  <step title="ZipPushDeploy" date="2026-02-27T02:19:27.707" >
+    <step title="ZipDeploy. Extract zip." date="2026-02-27T02:19:27.745" /><!-- duration: 4ms -->
+    <step title="Starting PushDeployAsync" date="2026-02-27T02:19:27.758" /><!-- duration: 7ms -->
+    <step title="Writing artifact to /tmp/zipdeploy/abdf0280-5131-4b28-b375-3a71012d26e3.zip" date="2026-02-27T02:19:27.789" >
+      <step title="Writing multipart request body to /tmp/zipdeploy/abdf0280-5131-4b28-b375-3a71012d26e3.zip" date="2026-02-27T02:19:27.792" /><!-- duration: 4ms -->
+    </step><!-- duration: 682ms -->
+    <step title="Start deployment in the background" date="2026-02-27T02:19:28.512" >
+      <step title="Acquiring Deployment Lock" date="2026-02-27T02:19:28.532" /><!-- duration: 3ms -->
+      <step title="Acquired Deployment Lock" date="2026-02-27T02:19:28.572" /><!-- duration: 10ms -->
+    </step><!-- duration: 124ms -->
+  </step><!-- duration: 934ms -->
+  <step title="Outgoing response" date="2026-02-27T02:19:28.644" type="response" statusCode="202" statusText="Accepted" /><!-- duration: 4ms -->
+</step><!-- duration: 1074ms -->

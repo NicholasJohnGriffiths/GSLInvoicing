@@ -1,0 +1,20 @@
+az login
+
+login as ms griffinsolutions.co.nz work/school
+
+Retrieving tenants and subscriptions for the selection...
+
+[Tenant and subscription selection]
+
+No     Subscription name     Subscription ID                       Tenant
+-----  --------------------  ------------------------------------  ---------------------
+[1] *  Azure subscription 1  e8f54ba3-a8f1-464f-8ad4-9367e5b7a3aa  Griffin Solutions Ltd
+
+The default is marked with an *; the default tenant is 'Griffin Solutions Ltd' and subscription is 'Azure subscription 1' (e8f54ba3-a8f1-464f-8ad4-9367e5b7a3aa).
+
+Select a subscription and tenant (Type a number or Enter for no changes): 1
+
+Tenant: Griffin Solutions Ltd
+Subscription: Azure subscription 1 (e8f54ba3-a8f1-464f-8ad4-9367e5b7a3aa)
+
+ $publishDir = "D:\Dev\GSLInvoicing\GSLInvoicing.Web\bin\Release\net9.0\publish"; $zipPath = "D:\Dev\GSLInvoicing\gslinvoicing-deploy.zip"; dotnet publish "D:\Dev\GSLInvoicing\GSLInvoicing.Web\GSLInvoicing.Web.csproj" -c Release; if (Test-Path $zipPath) { Remove-Item $zipPath -Force }; Compress-Archive -Path "$publishDir\*" -DestinationPath $zipPath -Force; az webapp deploy --resource-group rg-gslinvoicing --name gslinvoicing-48285 --src-path $zipPath --type zip

@@ -1,0 +1,6 @@
+<step title="Incoming Request" date="2026-05-20T01:33:59.804" instance="1e719b" url="/api/deployments/323bb73f-639d-4591-b588-7238a4035ab9/log" method="GET" type="request" pid="834,1,5" Accept="*/*" Host="gslinvoicing-48285.scm.azurewebsites.net" User-Agent="AZURECLI/2.83.0 (MSI)" Accept-Encoding="gzip, deflate" Authorization="Bea..." x-ms-client-request-id="f761489b-53eb-11f1-95aa-1068382f7146" X-ARR-LOG-ID="f761489b-53eb-11f1-95aa-1068382f7146" CLIENT-IP="43.245.241.157:53785" X-SITE-DEPLOYMENT-ID="gslinvoicing-48285" WAS-DEFAULT-HOSTNAME="gslinvoicing-48285.scm.azurewebsites.net" X-Forwarded-Proto="https" X-AppService-Proto="https" X-Forwarded-TlsVersion="1.3" X-WAWS-Unencoded-URL="/api/deployments/323bb73f-639d-4591-b588-7238a4035ab9/log" X-Client-IP="43.245.241.157" X-Client-Port="53785" >
+  <step title="DeploymentService.GetLogEntry" date="2026-05-20T01:33:59.825" >
+    <step title="DeploymentManager.GetLogEntries(id:323bb73f-639d-4591-b588-7238a4035ab9)" date="2026-05-20T01:33:59.828" /><!-- duration: 456ms -->
+  </step><!-- duration: 467ms -->
+  <step title="Outgoing response" date="2026-05-20T01:34:00.372" type="response" statusCode="200" statusText="OK" /><!-- duration: 3ms -->
+</step><!-- duration: 576ms -->

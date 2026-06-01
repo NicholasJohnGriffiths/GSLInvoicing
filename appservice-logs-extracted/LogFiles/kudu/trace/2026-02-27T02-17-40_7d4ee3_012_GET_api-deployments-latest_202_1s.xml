@@ -1,0 +1,9 @@
+<step title="Incoming Request" date="2026-02-27T02:17:40.500" instance="7d4ee3" url="/api/deployments/latest" method="GET" type="request" pid="833,1,23" Accept="*/*" Host="gslinvoicing-48285.scm.azurewebsites.net" User-Agent="AZURECLI/2.83.0 (MSI)" Accept-Encoding="gzip, deflate" Authorization="Bea..." x-ms-client-request-id="745e0a1d-1382-11f1-a5a5-1068382f7146" X-ARR-LOG-ID="745e0a1d-1382-11f1-a5a5-1068382f7146" CLIENT-IP="43.245.241.157:62333" X-SITE-DEPLOYMENT-ID="gslinvoicing-48285" WAS-DEFAULT-HOSTNAME="gslinvoicing-48285.scm.azurewebsites.net" X-Forwarded-Proto="https" X-AppService-Proto="https" X-Forwarded-TlsVersion="1.3" X-WAWS-Unencoded-URL="/api/deployments/latest" X-Client-IP="43.245.241.157" X-Client-Port="62333" >
+  <step title="Cleanup Xml Logs" date="2026-02-27T02:17:40.522" /><!-- duration: 140ms -->
+  <step title="DeploymentService.GetResult" date="2026-02-27T02:17:40.875" >
+    <step title="DeploymentService.GetLatestDeployment" date="2026-02-27T02:17:40.984" >
+      <step title="DeploymentManager.GetResults" date="2026-02-27T02:17:41.075" /><!-- duration: 610ms -->
+    </step><!-- duration: 713ms -->
+  </step><!-- duration: 833ms -->
+  <step title="Outgoing response" date="2026-02-27T02:17:41.736" type="response" statusCode="202" statusText="Accepted" /><!-- duration: 11ms -->
+</step><!-- duration: 1256ms -->

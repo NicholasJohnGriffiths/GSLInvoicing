@@ -3,15 +3,30 @@ using GSLInvoicing.Web.Models;
 using GSLInvoicing.Web.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using QuestPDF.Infrastructure;
+using System.Globalization;
 
 QuestPDF.Settings.License = LicenseType.Community;
 
 var builder = WebApplication.CreateBuilder(args);
+var nzCulture = (CultureInfo)CultureInfo.GetCultureInfo("en-NZ").Clone();
+
+// Linux App Service can fall back to the generic currency symbol unless the
+// request and thread cultures are pinned explicitly.
+nzCulture.NumberFormat.CurrencySymbol = "$";
+CultureInfo.DefaultThreadCurrentCulture = nzCulture;
+CultureInfo.DefaultThreadCurrentUICulture = nzCulture;
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    options.DefaultRequestCulture = new RequestCulture(nzCulture);
+    options.SupportedCultures = new[] { nzCulture };
+    options.SupportedUICultures = new[] { nzCulture };
+});
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<ITransactionTemplateService, TransactionTemplateService>();
@@ -43,6 +58,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseRequestLocalization();
 app.UseRouting();
 
 app.UseAuthentication();

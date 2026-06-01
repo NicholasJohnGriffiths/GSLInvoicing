@@ -538,7 +538,13 @@ public class InvoicesController : Controller
 
     private static decimal GetGstRate(string? gstCode)
     {
-        return string.Equals(gstCode?.Trim(), "S", StringComparison.OrdinalIgnoreCase) ? 0.15m : 0m;
+        return gstCode?.Trim().ToUpperInvariant() switch
+        {
+            "S" => 0.15m,
+            "Z" => 0m,
+            "N-T" => 0m,
+            _ => 0m
+        };
     }
 
     private async Task<List<SelectListItem>> GetClientsSelectList()

@@ -100,7 +100,9 @@
     </div>
     <div class="mb-3">
         <label asp-for="GSTCode" class="form-label"></label>
-        <input asp-for="GSTCode" class="form-control" />
+        <select asp-for="GSTCode" asp-items="ViewBag.GstCodeOptions" class="form-select">
+            <option value="">Select GST code</option>
+        </select>
         <span asp-validation-for="GSTCode" class="text-danger"></span>
     </div>
     <div class="mb-3">

@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "Transactions";
     var selectedClientId = ViewBag.SelectedClientId as int?;
+    var startDate = ViewBag.StartDate as DateOnly? ?? DateOnly.FromDateTime(DateTime.Today);
+    var endDate = ViewBag.EndDate as DateOnly? ?? DateOnly.FromDateTime(DateTime.Today);
     var sortBy = ViewBag.SortBy as string ?? "TransDate";
     var direction = ViewBag.Direction as string ?? "desc";
     var importPreview = ViewBag.ImportPreview as GSLInvoicing.Web.Models.ViewModels.TransactionImportPreview;
@@ -68,6 +70,8 @@
             <input id="excelFile" name="excelFile" type="file" class="form-control" accept=".xlsx,.xls" />
         </div>
         <input type="hidden" name="clientId" value="@selectedClientId" />
+        <input type="hidden" name="startDate" value="@startDate.ToString("yyyy-MM-dd")" />
+        <input type="hidden" name="endDate" value="@endDate.ToString("yyyy-MM-dd")" />
         <input type="hidden" name="sortBy" value="@sortBy" />
         <input type="hidden" name="direction" value="@direction" />
         <div class="col-md-3 d-flex gap-2">
@@ -91,6 +95,8 @@
             </div>
 
             <input type="hidden" name="clientId" value="@selectedClientId" />
+            <input type="hidden" name="startDate" value="@startDate.ToString("yyyy-MM-dd")" />
+            <input type="hidden" name="endDate" value="@endDate.ToString("yyyy-MM-dd")" />
             <input type="hidden" name="sortBy" value="@sortBy" />
             <input type="hidden" name="direction" value="@direction" />
             <input type="hidden" name="templateFolderPath" value="@templateFolderPath" />
@@ -182,6 +188,14 @@
             <option value="">All clients</option>
         </select>
     </div>
+    <div class="col-sm-6 col-md-4 col-lg-3">
+        <label for="startDate" class="form-label">Start Date</label>
+        <input id="startDate" name="startDate" type="date" class="form-control" value="@startDate.ToString("yyyy-MM-dd")" />
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-3">
+        <label for="endDate" class="form-label">End Date</label>
+        <input id="endDate" name="endDate" type="date" class="form-control" value="@endDate.ToString("yyyy-MM-dd")" />
+    </div>
     <input type="hidden" name="sortBy" value="@sortBy" />
     <input type="hidden" name="direction" value="@direction" />
     <input type="hidden" name="templateFolderPath" value="@templateFolderPath" />
@@ -197,13 +211,13 @@
     <table class="table table-striped table-sm align-middle">
         <thead>
             <tr>
-                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-sortBy="TransDate" asp-route-direction="@NextDirection("TransDate")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Date</a></th>
-                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-sortBy="Client" asp-route-direction="@NextDirection("Client")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Client</a></th>
-                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-sortBy="TransType" asp-route-direction="@NextDirection("TransType")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Type</a></th>
-                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-sortBy="Title" asp-route-direction="@NextDirection("Title")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Title</a></th>
-                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-sortBy="Reference" asp-route-direction="@NextDirection("Reference")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Reference</a></th>
-                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-sortBy="Amount" asp-route-direction="@NextDirection("Amount")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Amount</a></th>
-                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-sortBy="AccountNumber" asp-route-direction="@NextDirection("AccountNumber")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Account</a></th>
+                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-startDate="@startDate.ToString("yyyy-MM-dd")" asp-route-endDate="@endDate.ToString("yyyy-MM-dd")" asp-route-sortBy="TransDate" asp-route-direction="@NextDirection("TransDate")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Date</a></th>
+                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-startDate="@startDate.ToString("yyyy-MM-dd")" asp-route-endDate="@endDate.ToString("yyyy-MM-dd")" asp-route-sortBy="Client" asp-route-direction="@NextDirection("Client")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Client</a></th>
+                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-startDate="@startDate.ToString("yyyy-MM-dd")" asp-route-endDate="@endDate.ToString("yyyy-MM-dd")" asp-route-sortBy="TransType" asp-route-direction="@NextDirection("TransType")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Type</a></th>
+                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-startDate="@startDate.ToString("yyyy-MM-dd")" asp-route-endDate="@endDate.ToString("yyyy-MM-dd")" asp-route-sortBy="Title" asp-route-direction="@NextDirection("Title")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Title</a></th>
+                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-startDate="@startDate.ToString("yyyy-MM-dd")" asp-route-endDate="@endDate.ToString("yyyy-MM-dd")" asp-route-sortBy="Reference" asp-route-direction="@NextDirection("Reference")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Reference</a></th>
+                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-startDate="@startDate.ToString("yyyy-MM-dd")" asp-route-endDate="@endDate.ToString("yyyy-MM-dd")" asp-route-sortBy="Amount" asp-route-direction="@NextDirection("Amount")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Amount</a></th>
+                <th><a asp-action="Index" asp-route-clientId="@selectedClientId" asp-route-startDate="@startDate.ToString("yyyy-MM-dd")" asp-route-endDate="@endDate.ToString("yyyy-MM-dd")" asp-route-sortBy="AccountNumber" asp-route-direction="@NextDirection("AccountNumber")" asp-route-templateFolderPath="@templateFolderPath" class="link-dark text-decoration-none">Account</a></th>
                 <th></th>
             </tr>
         </thead>

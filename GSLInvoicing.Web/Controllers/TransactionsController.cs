@@ -36,7 +36,7 @@ public class TransactionsController : Controller
         _templateService = templateService;
     }
 
-    public async Task<IActionResult> Index(int? clientId = null, string? sortBy = null, string? direction = null, string? templateFolderPath = null)
+    public async Task<IActionResult> Index(int? clientId = null, DateOnly? startDate = null, DateOnly? endDate = null, string? sortBy = null, string? direction = null, string? templateFolderPath = null)
     {
         if (!CanAccessScopedData())
         {
@@ -44,12 +44,12 @@ public class TransactionsController : Controller
         }
 
         var statusMessage = TempData["StatusMessage"] as string;
-        return await BuildIndexView(clientId, sortBy, direction, null, null, statusMessage, null, templateFolderPath);
+        return await BuildIndexView(clientId, startDate, endDate, sortBy, direction, null, null, statusMessage, null, templateFolderPath);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> PreviewImport(int? clientId, string? sortBy, string? direction, string? templateName, string? templateFolderPath, IFormFile? excelFile)
+    public async Task<IActionResult> PreviewImport(int? clientId, DateOnly? startDate, DateOnly? endDate, string? sortBy, string? direction, string? templateName, string? templateFolderPath, IFormFile? excelFile)
     {
         if (!CanAccessScopedData())
         {
@@ -58,31 +58,33 @@ public class TransactionsController : Controller
 
         if (string.IsNullOrWhiteSpace(templateName))
         {
-            return await BuildIndexView(clientId, sortBy, direction, null, null, "Select a transaction template.", null, templateFolderPath);
+            return await BuildIndexView(clientId, startDate, endDate, sortBy, direction, null, null, "Select a transaction template.", null, templateFolderPath);
         }
 
         if (excelFile == null || excelFile.Length == 0)
         {
-            return await BuildIndexView(clientId, sortBy, direction, null, templateName, "Select an Excel file to import.", null, templateFolderPath);
+            return await BuildIndexView(clientId, startDate, endDate, sortBy, direction, null, templateName, "Select an Excel file to import.", null, templateFolderPath);
         }
 
         var template = await _templateService.GetTemplateAsync(templateName, templateFolderPath);
         if (template == null)
         {
-            return await BuildIndexView(clientId, sortBy, direction, null, null, "Selected template was not found.", null, templateFolderPath);
+            return await BuildIndexView(clientId, startDate, endDate, sortBy, direction, null, null, "Selected template was not found.", null, templateFolderPath);
         }
 
         await using var stream = excelFile.OpenReadStream();
         var preview = await BuildImportPreviewAsync(stream, template);
 
         var payload = JsonSerializer.Serialize(preview);
-        return await BuildIndexView(clientId, sortBy, direction, preview, template.Name, null, payload, null, templateFolderPath);
+        return await BuildIndexView(clientId, startDate, endDate, sortBy, direction, preview, template.Name, null, payload, null, templateFolderPath);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> ConfirmImport(
         int? clientId,
+        DateOnly? startDate,
+        DateOnly? endDate,
         string? sortBy,
         string? direction,
         string? previewPayload,
@@ -97,13 +99,13 @@ public class TransactionsController : Controller
 
         if (string.IsNullOrWhiteSpace(previewPayload))
         {
-            return await BuildIndexView(clientId, sortBy, direction, null, null, "No preview data to import.", null, templateFolderPath);
+            return await BuildIndexView(clientId, startDate, endDate, sortBy, direction, null, null, "No preview data to import.", null, templateFolderPath);
         }
 
         var preview = JsonSerializer.Deserialize<TransactionImportPreview>(previewPayload);
         if (preview == null)
         {
-            return await BuildIndexView(clientId, sortBy, direction, null, null, "Preview data could not be read.", null, templateFolderPath);
+            return await BuildIndexView(clientId, startDate, endDate, sortBy, direction, null, null, "Preview data could not be read.", null, templateFolderPath);
         }
 
         var isAdmin = IsAdminUser();
@@ -168,7 +170,7 @@ public class TransactionsController : Controller
 
         if (toImport.Count == 0)
         {
-            return await BuildIndexView(clientId, sortBy, direction, preview, preview.TemplateName, "No valid rows were found to import.", previewPayload, null, templateFolderPath);
+            return await BuildIndexView(clientId, startDate, endDate, sortBy, direction, preview, preview.TemplateName, "No valid rows were found to import.", previewPayload, null, templateFolderPath);
         }
 
         foreach (var row in toImport)
@@ -190,11 +192,13 @@ public class TransactionsController : Controller
 
         await _context.SaveChangesAsync();
         TempData["StatusMessage"] = $"Imported {toImport.Count} transaction row(s).";
-        return RedirectToAction(nameof(Index), new { clientId, sortBy, direction, templateFolderPath });
+        return RedirectToAction(nameof(Index), new { clientId, startDate, endDate, sortBy, direction, templateFolderPath });
     }
 
     private async Task<ViewResult> BuildIndexView(
         int? clientId,
+        DateOnly? startDate,
+        DateOnly? endDate,
         string? sortBy,
         string? direction,
         TransactionImportPreview? preview,
@@ -206,6 +210,7 @@ public class TransactionsController : Controller
     {
         var isAdmin = IsAdminUser();
         var vendorId = GetCurrentVendorId();
+        var (normalizedStartDate, normalizedEndDate) = NormalizeDateRange(startDate, endDate);
 
         var normalizedSortBy = NormalizeSortBy(sortBy);
         var normalizedDirection = NormalizeDirection(direction);
@@ -239,12 +244,18 @@ public class TransactionsController : Controller
             query = query.Where(t => t.ClientId == clientId.Value);
         }
 
+        var startDateTime = normalizedStartDate.ToDateTime(TimeOnly.MinValue);
+        var endExclusive = normalizedEndDate.AddDays(1).ToDateTime(TimeOnly.MinValue);
+        query = query.Where(t => t.TransDate >= startDateTime && t.TransDate < endExclusive);
+
         query = ApplySorting(query, normalizedSortBy, normalizedDirection);
 
         var items = await query.ToListAsync();
 
         ViewBag.ClientOptions = clientOptions;
         ViewBag.SelectedClientId = clientId;
+        ViewBag.StartDate = normalizedStartDate;
+        ViewBag.EndDate = normalizedEndDate;
         ViewBag.SortBy = normalizedSortBy;
         ViewBag.Direction = normalizedDirection;
         ViewBag.TemplateFolderPath = templateFolderPath;
@@ -263,6 +274,20 @@ public class TransactionsController : Controller
         ViewBag.StatusMessage = statusMessage;
 
         return View("Index", items);
+    }
+
+    private static (DateOnly StartDate, DateOnly EndDate) NormalizeDateRange(DateOnly? startDate, DateOnly? endDate)
+    {
+        var today = DateOnly.FromDateTime(DateTime.Today);
+        var normalizedStartDate = startDate ?? new DateOnly(today.Year, today.Month, 1);
+        var normalizedEndDate = endDate ?? new DateOnly(today.Year, today.Month, DateTime.DaysInMonth(today.Year, today.Month));
+
+        if (normalizedEndDate < normalizedStartDate)
+        {
+            (normalizedStartDate, normalizedEndDate) = (normalizedEndDate, normalizedStartDate);
+        }
+
+        return (normalizedStartDate, normalizedEndDate);
     }
 
     public async Task<IActionResult> Details(int? id)

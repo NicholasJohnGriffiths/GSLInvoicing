@@ -257,6 +257,7 @@ public class ClientsControllerPageTests
         {
             Name = "Admin Created Client",
             VendorId = 2,
+            GSTCode = "S",
             Rate = 90m,
             DateCreated = DateOnly.FromDateTime(DateTime.Today)
         });
@@ -296,6 +297,7 @@ public class ClientsControllerPageTests
         {
             Name = "General User Client",
             VendorId = 2,
+            GSTCode = "S",
             Rate = 120m,
             DateCreated = DateOnly.FromDateTime(DateTime.Today)
         });

@@ -11,6 +11,8 @@ namespace GSLInvoicing.Web.Controllers;
 
 public class ClientsController : Controller
 {
+    private static readonly string[] AllowedGstCodes = ["S", "Z", "N-T"];
+
     private static readonly string[] MyobHeaders =
     [
         "Co./Last Name", "First Name", "Card ID", "Card Status", "Addr 1 - Line 1", "Addr 1 - Line 2", "Addr 1 - Line 3", "Addr 1 - Line 4", "Addr 1 - City", "Addr 1 - State", "Addr 1 - Postcode", "Addr 1 - Country", "Addr 1 - Phone  No. 1", "Addr 1 - Phone  No. 2", "Addr 1 - Phone  No. 3", "Addr 1 - Fax  No", "Addr 1 - Email", "Addr 1 - WWW", "Addr 1 - Contact Name", "Addr 1 - Salutation",
@@ -174,6 +176,7 @@ public class ClientsController : Controller
         var client = new Client
         {
             DateCreated = DateOnly.FromDateTime(DateTime.Today),
+            GSTCode = "S",
             VendorId = vendorId ?? 0
         };
 
@@ -218,6 +221,8 @@ public class ClientsController : Controller
         {
             client.VendorId = vendorId!.Value;
         }
+
+        ValidateAndNormalizeGstCode(client);
 
         if (!ModelState.IsValid)
         {
@@ -331,6 +336,8 @@ public class ClientsController : Controller
                 ModelState.AddModelError(nameof(Client.VendorId), "Selected vendor was not found.");
             }
         }
+
+        ValidateAndNormalizeGstCode(client);
 
         if (!ModelState.IsValid)
         {
@@ -464,9 +471,22 @@ public class ClientsController : Controller
 
     private ViewResult CreateViewWithVendors(Client client)
     {
+        if (string.IsNullOrWhiteSpace(client.GSTCode))
+        {
+            client.GSTCode = "S";
+        }
+
         var allowVendorSelection = IsAdminUser();
         ViewBag.AllowVendorSelection = allowVendorSelection;
         ViewBag.IsVendorSelectionLocked = false;
+        ViewBag.GstCodeOptions = AllowedGstCodes
+            .Select(code => new SelectListItem
+            {
+                Value = code,
+                Text = code,
+                Selected = string.Equals(code, client.GSTCode, StringComparison.OrdinalIgnoreCase)
+            })
+            .ToList();
 
         if (allowVendorSelection)
         {
@@ -494,6 +514,24 @@ public class ClientsController : Controller
         }
 
         return View(client);
+    }
+
+    private void ValidateAndNormalizeGstCode(Client client)
+    {
+        var normalized = client.GSTCode?.Trim().ToUpperInvariant();
+        if (string.IsNullOrWhiteSpace(normalized))
+        {
+            ModelState.AddModelError(nameof(Client.GSTCode), "GST Code is required.");
+            return;
+        }
+
+        if (!AllowedGstCodes.Contains(normalized, StringComparer.OrdinalIgnoreCase))
+        {
+            ModelState.AddModelError(nameof(Client.GSTCode), "GST Code must be one of: S, Z, N-T.");
+            return;
+        }
+
+        client.GSTCode = AllowedGstCodes.First(code => string.Equals(code, normalized, StringComparison.OrdinalIgnoreCase));
     }
 
     private static string IncrementCardId(string? lastCardId)

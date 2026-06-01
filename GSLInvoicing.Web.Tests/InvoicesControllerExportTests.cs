@@ -120,6 +120,50 @@ public class InvoicesControllerPageTests
     }
 
     [Fact]
+    public async Task Edit_Post_Saves_PONumber_When_NewItem_Is_Empty()
+    {
+        var current = DateOnly.FromDateTime(DateTime.Today);
+        await using var context = CreateContext();
+
+        context.Clients.Add(new Client
+        {
+            Id = 1,
+            Name = "PO Client",
+            GSTCode = "S",
+            Rate = 120m,
+            DateCreated = current
+        });
+
+        context.Invoices.Add(new Invoice
+        {
+            Id = 15,
+            ClientId = 1,
+            InvoiceNumber = "GSL2015",
+            InvoiceDate = current,
+            PONumber = "OLD-PO",
+            DateCreated = current
+        });
+
+        await context.SaveChangesAsync();
+
+        var controller = new InvoicesController(context);
+        var result = await controller.Edit(15, new InvoiceEditViewModel
+        {
+            Id = 15,
+            ClientId = 1,
+            InvoiceNumber = "GSL2015",
+            InvoiceDate = current,
+            PONumber = "PO-12345"
+        });
+
+        var redirect = Assert.IsType<RedirectToActionResult>(result);
+        Assert.Equal(nameof(InvoicesController.Edit), redirect.ActionName);
+
+        var updated = await context.Invoices.SingleAsync(i => i.Id == 15);
+        Assert.Equal("PO-12345", updated.PONumber);
+    }
+
+    [Fact]
     public async Task Export_Uses_Expected_Tsv_Headers()
     {
         var currentDate = DateOnly.FromDateTime(DateTime.Today);

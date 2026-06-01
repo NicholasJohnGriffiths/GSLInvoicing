@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace GSLInvoicing.Web.Models.ViewModels;
 
@@ -33,6 +34,7 @@ public class InvoiceEditViewModel
 
     public List<InvoiceItemDisplayViewModel> Items { get; set; } = new();
 
+    [ValidateNever]
     public AddInvoiceItemInput NewItem { get; set; } = new();
 }
 

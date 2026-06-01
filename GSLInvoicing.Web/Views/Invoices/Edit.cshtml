@@ -4,6 +4,23 @@
     ViewData["Title"] = "Edit Invoice";
 }
 
+<style>
+    .description-editor {
+        height: 31px;
+        min-height: 31px;
+        overflow: hidden;
+        resize: vertical;
+        transition: min-height 0.15s ease-in-out;
+    }
+
+    .description-editor:hover,
+    .description-editor:focus {
+        min-height: 120px;
+        height: auto;
+        overflow: auto;
+    }
+</style>
+
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h1 class="h3 mb-0">Edit Invoice</h1>
     <a asp-action="Index" asp-route-year="@Model.InvoiceDate.Year" asp-route-month="@Model.InvoiceDate.Month" class="btn btn-outline-secondary">Back to Invoices</a>
@@ -85,7 +102,7 @@
         {
             <tr>
                 <td>
-                    <input name="Description" form="edit-item-@item.Id" value="@item.Description" title="@item.Description" oninput="this.title = this.value" class="form-control form-control-sm" />
+                    <textarea name="Description" form="edit-item-@item.Id" title="@item.Description" oninput="this.title = this.value" class="form-control form-control-sm description-editor">@item.Description</textarea>
                 </td>
                 <td class="text-end">
                     <input name="Hours" form="edit-item-@item.Id" value="@(item.Hours > 0 ? item.Hours.ToString("0.##") : string.Empty)" class="form-control form-control-sm text-end" />

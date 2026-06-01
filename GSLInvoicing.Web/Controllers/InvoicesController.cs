@@ -213,6 +213,40 @@ public class InvoicesController : Controller
     }
 
     [HttpGet]
+    public async Task<IActionResult> Preview(int id)
+    {
+        var vendorId = GetCurrentVendorId();
+        if (vendorId == null && IsAuthenticatedUser())
+        {
+            return Forbid();
+        }
+
+        var invoice = await _context.Invoices
+            .AsNoTracking()
+            .Include(i => i.Client)
+            .ThenInclude(c => c.Vendor)
+            .Include(i => i.InvoiceItems)
+            .FirstOrDefaultAsync(i => i.Id == id && (!vendorId.HasValue || i.Client.VendorId == vendorId.Value));
+
+        if (invoice == null)
+        {
+            return NotFound();
+        }
+
+        AppUser? appUser = null;
+        var appUserIdValue = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (int.TryParse(appUserIdValue, out var appUserId))
+        {
+            appUser = await _context.AppUsers
+                .AsNoTracking()
+                .FirstOrDefaultAsync(u => u.Id == appUserId);
+        }
+
+        var pdfBytes = InvoicePdfGenerator.Generate(invoice, appUser);
+        return File(pdfBytes, "application/pdf");
+    }
+
+    [HttpGet]
     public async Task<IActionResult> Print(int id)
     {
         var vendorId = GetCurrentVendorId();

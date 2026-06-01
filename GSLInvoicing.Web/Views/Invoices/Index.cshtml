@@ -75,7 +75,7 @@
             <td>@invoice.PONumber</td>
             <td>@invoice.InvoiceItems.Sum(ii => ii.Total).ToString("C2")</td>
             <td class="text-end">
-                <a asp-action="Print" asp-route-id="@invoice.Id" target="_blank" class="btn btn-sm btn-outline-secondary">Preview</a>
+                <a asp-action="Preview" asp-route-id="@invoice.Id" target="_blank" class="btn btn-sm btn-outline-secondary">Preview</a>
                 <a asp-action="Edit" asp-route-id="@invoice.Id" class="btn btn-sm btn-outline-primary">Edit</a>
                 <form asp-action="Delete" asp-route-id="@invoice.Id" method="post" class="d-inline" onsubmit="return confirm('Are you sure you want to delete invoice ' + '@invoice.InvoiceNumber' + '? This cannot be undone.');">
                     <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
